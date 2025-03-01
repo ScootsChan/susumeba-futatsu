@@ -16,6 +16,10 @@ config/version="Prototype"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://susumeba_futatsu.png"
 
+[autoload]
+
+Main="*res://scripts/main.gd"
+
 [display]
 
 window/size/viewport_width=1280

@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=4 uid="uid://kd8mdi67fcjp"]
+
+[ext_resource type="Texture2D" uid="uid://cqdrv50bg1w2i" path="res://susumeba-futatsu-spritesheet.png" id="1_dfbfx"]
+[ext_resource type="Script" path="res://scripts/combat_tiles.gd" id="2_3mvoa"]
+[ext_resource type="PackedScene" uid="uid://uk8l1mne8xoo" path="res://scenes/venusian.tscn" id="3_ipeqo"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rcv67"]
+texture = ExtResource("1_dfbfx")
+texture_region_size = Vector2i(104, 92)
+2:1/0 = 0
+2:0/0 = 0
+3:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_14opu"]
+tile_shape = 3
+tile_offset_axis = 1
+tile_size = Vector2i(104, 92)
+sources/0 = SubResource("TileSetAtlasSource_rcv67")
+
+[node name="CombatTiles" type="TileMapLayer"]
+tile_map_data = PackedByteArray("AAAIAAMAAAACAAAAAAAHAAEAAAACAAAAAAAHAAIAAAACAAAAAAAGAAIAAAACAAAAAAAFAAIAAAACAAAAAAAGAAMAAAACAAAAAAAGAAEAAAACAAAAAAAIAAIAAAACAAAAAAAHAAMAAAACAAAAAAAIAAQAAAACAAAAAAAJAAIAAAACAAAAAAAJAAMAAAACAAAAAAAJAAQAAAACAAAAAAAKAAQAAAACAAAAAAAKAAMAAAACAAAAAAAHAAQAAAACAAAAAAAIAAUAAAACAAAAAAAGAAQAAAACAAAAAAAFAAMAAAACAAAAAAAEAAQAAAACAAAAAAAFAAEAAAACAAAAAAAEAAEAAAACAAAAAAAHAAAAAAACAAAAAAAIAAAAAAACAAAAAAAIAAEAAAACAAAAAAAJAAEAAAACAAAAAAAKAAEAAAACAAAAAAAKAAIAAAACAAAAAAALAAIAAAACAAAAAAAMAAIAAAACAAAAAAALAAMAAAACAAAAAAAMAAQAAAACAAAAAAAKAAUAAAACAAAAAAAKAAYAAAACAAAAAAAJAAUAAAACAAAAAAAHAAUAAAACAAAAAAAIAAYAAAACAAAAAAAGAAUAAAACAAAAAAAFAAQAAAACAAAAAAAGAAYAAAACAAAAAAA=")
+tile_set = SubResource("TileSet_14opu")
+script = ExtResource("2_3mvoa")
+
+[node name="Venusian" parent="." instance=ExtResource("3_ipeqo")]
+position = Vector2(598, 275)

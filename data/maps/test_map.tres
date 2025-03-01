@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="MapData" load_steps=5 format=3 uid="uid://76dpayoqbdbc"]
+
+[ext_resource type="Script" path="res://scripts/resources/map_data.gd" id="1_yaost"]
+[ext_resource type="Script" path="res://scripts/resources/hex.gd" id="2_xk2hq"]
+
+[sub_resource type="Resource" id="Resource_2tt1e"]
+script = ExtResource("2_xk2hq")
+location = Vector2i(2, 2)
+terrain_type = "plains"
+character_spawn = "test_char"
+
+[sub_resource type="Resource" id="Resource_lqlfn"]
+script = ExtResource("2_xk2hq")
+location = Vector2i(2, 3)
+terrain_type = "forest"
+character_spawn = ""
+
+[resource]
+script = ExtResource("1_yaost")
+map_name = "Test Map"
+map_size = 8
+tile_data = Array[ExtResource("2_xk2hq")]([SubResource("Resource_2tt1e"), SubResource("Resource_lqlfn")])
