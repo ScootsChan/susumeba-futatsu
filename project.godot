@@ -11,8 +11,15 @@ config_version=5
 [application]
 
 config/name="SUSUMEBA FUTATSU"
+config/description="MOVING FORWARD GETS YOU TWO: Made for the Code for a Cause Game Jam!"
+config/version="Prototype"
 config/features=PackedStringArray("4.3", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://susumeba_futatsu.png"
+
+[display]
+
+window/size/viewport_width=1200
+window/size/viewport_height=800
 
 [rendering]
 
