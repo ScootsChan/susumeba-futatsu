@@ -18,8 +18,8 @@ config/icon="res://susumeba_futatsu.png"
 
 [display]
 
-window/size/viewport_width=1200
-window/size/viewport_height=800
+window/size/viewport_width=1280
+window/size/viewport_height=720
 
 [rendering]
 
