@@ -21,13 +21,14 @@ EnemyPanel/styles/panel = SubResource("StyleBoxFlat_bcrm2")
 PlayerPanel/base_type = &"PanelContainer"
 PlayerPanel/styles/panel = ExtResource("1_4f8mo")
 
-[node name="main_ui" type="Control"]
-layout_mode = 3
+[node name="main_ui" type="ReferenceRect"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 theme = SubResource("Theme_j5wdv")
 script = ExtResource("1_djvmp")
 
@@ -38,8 +39,8 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -87.0
-offset_top = -47.0
+offset_left = -159.0
+offset_top = -74.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_type_variation = &"PlayerPanel"
@@ -58,9 +59,8 @@ text = "Team Name Here"
 horizontal_alignment = 1
 
 [node name="EnemyBox" type="PanelContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 159.0
+offset_bottom = 74.0
 theme_type_variation = &"EnemyPanel"
 
 [node name="EnemyVBox" type="VBoxContainer" parent="EnemyBox"]
