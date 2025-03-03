@@ -13,7 +13,7 @@ config_version=5
 config/name="SUSUMEBA FUTATSU"
 config/description="MOVING FORWARD GETS YOU TWO: Made for the Code for a Cause Game Jam!"
 config/version="Prototype"
-config/features=PackedStringArray("4.3", "GL Compatibility")
+config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://susumeba_futatsu.png"
 
 [autoload]

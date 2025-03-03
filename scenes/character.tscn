@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://bmbkco1akjsg8"]
 
 [ext_resource type="Texture2D" uid="uid://b5d2l4qh56jf0" path="res://icon.svg" id="1_3ncm5"]
-[ext_resource type="Script" path="res://scripts/resources/character.gd" id="2_1schm"]
+[ext_resource type="Script" uid="uid://bvtoquffebb41" path="res://scripts/resources/character.gd" id="2_1schm"]
 [ext_resource type="Texture2D" uid="uid://cqdrv50bg1w2i" path="res://susumeba-futatsu-spritesheet.png" id="3_8r5na"]
 [ext_resource type="SpriteFrames" uid="uid://m6ppfc7t4i0s" path="res://visuals/targeting_sprite.tres" id="4_u6aox"]
 

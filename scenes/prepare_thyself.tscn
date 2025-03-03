@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://chjswue3laq5u"]
 
-[ext_resource type="Script" path="res://scripts/go_forth_box.gd" id="1_wq8ao"]
+[ext_resource type="Script" uid="uid://cab3wi5kq1cbp" path="res://scripts/go_forth_box.gd" id="1_wq8ao"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_66met"]
 content_margin_left = 12.0
@@ -93,8 +93,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3vltv"]
 _data = {
-"RESET": SubResource("Animation_dsnmb"),
-"intro": SubResource("Animation_j3xsi")
+&"RESET": SubResource("Animation_dsnmb"),
+&"intro": SubResource("Animation_j3xsi")
 }
 
 [node name="PrepareThyselfBox" type="HBoxContainer"]
@@ -146,7 +146,7 @@ theme_type_variation = &"SidePanel"
 
 [node name="AnimPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_3vltv")
+&"": SubResource("AnimationLibrary_3vltv")
 }
 
 [node name="Timer" type="Timer" parent="."]

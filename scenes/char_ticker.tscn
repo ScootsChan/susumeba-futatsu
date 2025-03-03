@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://bkf7gjcsviqns"]
 
 [ext_resource type="StyleBox" uid="uid://gjn2an8rcles" path="res://visuals/ui/blufor_ticker.tres" id="1_3ixdb"]
-[ext_resource type="Script" path="res://scripts/character_ticker.gd" id="1_g7w5s"]
+[ext_resource type="Script" uid="uid://b1olqyohwml6p" path="res://scripts/character_ticker.gd" id="1_g7w5s"]
 [ext_resource type="Texture2D" uid="uid://b5d2l4qh56jf0" path="res://icon.svg" id="2_4nc5s"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_enydj"]

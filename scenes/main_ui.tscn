@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://6evq1w52p54j"]
 
 [ext_resource type="StyleBox" uid="uid://co7ntdu0fqsox" path="res://visuals/ui/player_info_panel.tres" id="1_4f8mo"]
-[ext_resource type="Script" path="res://scripts/main_ui.gd" id="1_djvmp"]
+[ext_resource type="Script" uid="uid://n8wvncsk4ebd" path="res://scripts/main_ui.gd" id="1_djvmp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bcrm2"]
 content_margin_left = 8.0
