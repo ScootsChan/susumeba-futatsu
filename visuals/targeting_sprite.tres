@@ -1,0 +1,25 @@
+[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://m6ppfc7t4i0s"]
+
+[ext_resource type="Texture2D" uid="uid://cqdrv50bg1w2i" path="res://susumeba-futatsu-spritesheet.png" id="1_gg6ky"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7x01"]
+atlas = ExtResource("1_gg6ky")
+region = Rect2(208, 368, 208, 184)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1lmp3"]
+atlas = ExtResource("1_gg6ky")
+region = Rect2(416, 368, 208, 184)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y7x01")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1lmp3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

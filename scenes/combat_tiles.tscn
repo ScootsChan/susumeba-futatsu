@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://kd8mdi67fcjp"]
+[gd_scene load_steps=6 format=3 uid="uid://kd8mdi67fcjp"]
 
 [ext_resource type="Texture2D" uid="uid://cqdrv50bg1w2i" path="res://susumeba-futatsu-spritesheet.png" id="1_dfbfx"]
 [ext_resource type="Script" path="res://scripts/combat_tiles.gd" id="2_3mvoa"]
+[ext_resource type="PackedScene" uid="uid://6evq1w52p54j" path="res://scenes/main_ui.tscn" id="3_twcmv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rcv67"]
 texture = ExtResource("1_dfbfx")
@@ -20,3 +21,5 @@ sources/0 = SubResource("TileSetAtlasSource_rcv67")
 texture_filter = 1
 tile_set = SubResource("TileSet_14opu")
 script = ExtResource("2_3mvoa")
+
+[node name="main_ui" parent="." instance=ExtResource("3_twcmv")]

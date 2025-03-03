@@ -1,8 +1,25 @@
-[gd_resource type="Resource" script_class="Character" load_steps=2 format=3 uid="uid://bcqg3qokd1aht"]
+[gd_resource type="Resource" script_class="CharacterData" load_steps=5 format=3 uid="uid://bcqg3qokd1aht"]
 
-[ext_resource type="Script" path="res://scripts/resources/character.gd" id="1_m34pl"]
+[ext_resource type="Script" path="res://scripts/resources/attack.gd" id="1_bd0pd"]
+[ext_resource type="Script" path="res://scripts/resources/character_data.gd" id="1_t05yg"]
+[ext_resource type="Texture2D" uid="uid://b5d2l4qh56jf0" path="res://icon.svg" id="3_xdiou"]
+
+[sub_resource type="Resource" id="Resource_i3hlp"]
+script = ExtResource("1_bd0pd")
+attack_name = "Bang Bang!"
+range = 3
+damage = 3
+damage_type = "piercing"
+in_range = false
 
 [resource]
-script = ExtResource("1_m34pl")
-char_name = ""
-allegiance = ""
+script = ExtResource("1_t05yg")
+char_name = "Test"
+allegiance = "BLUFOR"
+sprite = ExtResource("3_xdiou")
+acted = false
+speed = 0
+weakness = ""
+health = 10
+max_health = 10
+attacks = Array[ExtResource("1_bd0pd")]([SubResource("Resource_i3hlp")])

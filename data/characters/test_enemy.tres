@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=5 format=3 uid="uid://bvbqro74lan3o"]
+
+[ext_resource type="Script" path="res://scripts/resources/attack.gd" id="1_sry42"]
+[ext_resource type="Script" path="res://scripts/resources/character_data.gd" id="2_v74bn"]
+[ext_resource type="Texture2D" uid="uid://b5d2l4qh56jf0" path="res://icon.svg" id="3_s4s37"]
+
+[sub_resource type="Resource" id="Resource_8ws5t"]
+script = ExtResource("1_sry42")
+attack_name = "Anti-Tank Round"
+range = 2
+damage = 2
+damage_type = "explosive"
+in_range = false
+
+[resource]
+script = ExtResource("2_v74bn")
+char_name = "Test Enemy"
+allegiance = "OPFOR"
+sprite = ExtResource("3_s4s37")
+acted = false
+speed = 1
+weakness = "piercing"
+health = 5
+max_health = 5
+attacks = Array[ExtResource("1_sry42")]([SubResource("Resource_8ws5t")])

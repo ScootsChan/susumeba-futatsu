@@ -1,0 +1,144 @@
+[gd_scene load_steps=7 format=3 uid="uid://blx0ri64kdhxq"]
+
+[ext_resource type="Script" path="res://scripts/char_info.gd" id="1_4siq4"]
+[ext_resource type="Texture2D" uid="uid://b5d2l4qh56jf0" path="res://icon.svg" id="1_gkcuq"]
+[ext_resource type="Texture2D" uid="uid://baodj03vunghj" path="res://visuals/ui-spritesheet.png" id="3_8y7vb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vked3"]
+content_margin_left = 12.0
+content_margin_top = 12.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+bg_color = Color(0.151276, 0.151276, 0.151276, 1)
+border_width_left = 4
+border_width_top = 6
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.152941, 0.152941, 0.152941, 0)
+border_blend = true
+
+[sub_resource type="Theme" id="Theme_joowh"]
+HBoxContainer/constants/separation = 12
+Label/font_sizes/font_size = 16
+MarginContainer/constants/margin_bottom = 8
+MarginContainer/constants/margin_left = 12
+MarginContainer/constants/margin_right = 12
+MarginContainer/constants/margin_top = 8
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_vked3")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_el1vd"]
+atlas = ExtResource("3_8y7vb")
+region = Rect2(256, 0, 128, 128)
+
+[node name="char_info" type="Window"]
+title = "Char Name Here"
+position = Vector2i(0, 36)
+size = Vector2i(600, 400)
+script = ExtResource("1_4siq4")
+
+[node name="CharContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_joowh")
+
+[node name="MainVBox" type="VBoxContainer" parent="CharContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="DeclarePanel" type="PanelContainer" parent="CharContainer/MainVBox"]
+layout_mode = 2
+
+[node name="DeclareButton" type="Button" parent="CharContainer/MainVBox/DeclarePanel"]
+layout_mode = 2
+text = "Declare Action"
+
+[node name="TitleHBox" type="HBoxContainer" parent="CharContainer/MainVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Sprite" type="TextureRect" parent="CharContainer/MainVBox/TitleHBox"]
+layout_mode = 2
+texture = ExtResource("1_gkcuq")
+stretch_mode = 5
+
+[node name="HPBar" type="ProgressBar" parent="CharContainer/MainVBox/TitleHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 10.0
+max_value = 10.0
+value = 10.0
+
+[node name="StatHBox" type="HBoxContainer" parent="CharContainer/MainVBox"]
+layout_mode = 2
+
+[node name="SpeedPanel" type="PanelContainer" parent="CharContainer/MainVBox/StatHBox"]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="SpeedLabel" type="Label" parent="CharContainer/MainVBox/StatHBox/SpeedPanel"]
+layout_mode = 2
+text = "Speed: blah"
+
+[node name="WeaknessPanel" type="PanelContainer" parent="CharContainer/MainVBox/StatHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="WeaknessLabel" type="Label" parent="CharContainer/MainVBox/StatHBox/WeaknessPanel"]
+layout_mode = 2
+text = "Weaknesses: blah blah blah"
+horizontal_alignment = 1
+
+[node name="ActPanel" type="PanelContainer" parent="CharContainer/MainVBox/StatHBox"]
+layout_mode = 2
+
+[node name="ActHBox" type="HBoxContainer" parent="CharContainer/MainVBox/StatHBox/ActPanel"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="CharContainer/MainVBox/StatHBox/ActPanel/ActHBox"]
+layout_mode = 2
+text = "Acted?:"
+
+[node name="ActCheck" type="CheckBox" parent="CharContainer/MainVBox/StatHBox/ActPanel/ActHBox"]
+layout_mode = 2
+button_mask = 0
+
+[node name="AttackHBox" type="HBoxContainer" parent="CharContainer/MainVBox"]
+layout_mode = 2
+
+[node name="AttackIcon" type="TextureRect" parent="CharContainer/MainVBox/AttackHBox"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_el1vd")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="DMGTypePanel" type="PanelContainer" parent="CharContainer/MainVBox/AttackHBox"]
+layout_mode = 2
+
+[node name="DamageType" type="Label" parent="CharContainer/MainVBox/AttackHBox/DMGTypePanel"]
+layout_mode = 2
+text = "Burn"
+
+[node name="AttackNameLabel" type="Label" parent="CharContainer/MainVBox/AttackHBox"]
+layout_mode = 2
+text = "Attack Name Here"
+
+[node name="RangePanel" type="PanelContainer" parent="CharContainer/MainVBox/AttackHBox"]
+layout_mode = 2
+
+[node name="RangeLabel" type="Label" parent="CharContainer/MainVBox/AttackHBox/RangePanel"]
+layout_mode = 2
+text = "Range: 4"
+
+[node name="DamagePanel" type="PanelContainer" parent="CharContainer/MainVBox/AttackHBox"]
+layout_mode = 2
+
+[node name="DamageLabel" type="Label" parent="CharContainer/MainVBox/AttackHBox/DamagePanel"]
+layout_mode = 2
+text = "Damage: 2"
+
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]

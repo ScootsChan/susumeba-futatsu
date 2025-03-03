@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="MapData" load_steps=5 format=3 uid="uid://76dpayoqbdbc"]
+[gd_resource type="Resource" script_class="MapData" load_steps=13 format=3 uid="uid://76dpayoqbdbc"]
 
 [ext_resource type="Script" path="res://scripts/resources/map_data.gd" id="1_yaost"]
 [ext_resource type="Script" path="res://scripts/resources/hex.gd" id="2_xk2hq"]
@@ -7,7 +7,7 @@
 script = ExtResource("2_xk2hq")
 location = Vector2i(2, 2)
 terrain_type = "plains"
-character_spawn = "test_char"
+character_spawn = "test"
 
 [sub_resource type="Resource" id="Resource_lqlfn"]
 script = ExtResource("2_xk2hq")
@@ -15,8 +15,56 @@ location = Vector2i(2, 3)
 terrain_type = "forest"
 character_spawn = ""
 
+[sub_resource type="Resource" id="Resource_ylxk1"]
+script = ExtResource("2_xk2hq")
+location = Vector2i(3, 3)
+terrain_type = "forest"
+character_spawn = ""
+
+[sub_resource type="Resource" id="Resource_ak1k5"]
+script = ExtResource("2_xk2hq")
+location = Vector2i(3, 2)
+terrain_type = "plains"
+character_spawn = ""
+
+[sub_resource type="Resource" id="Resource_hsfl4"]
+script = ExtResource("2_xk2hq")
+location = Vector2i(4, 2)
+terrain_type = "plains"
+character_spawn = ""
+
+[sub_resource type="Resource" id="Resource_0ufdx"]
+script = ExtResource("2_xk2hq")
+location = Vector2i(4, 3)
+terrain_type = "plains"
+character_spawn = ""
+
+[sub_resource type="Resource" id="Resource_j7mfj"]
+script = ExtResource("2_xk2hq")
+location = Vector2i(1, 3)
+terrain_type = "plains"
+character_spawn = ""
+
+[sub_resource type="Resource" id="Resource_5rnwn"]
+script = ExtResource("2_xk2hq")
+location = Vector2i(1, 2)
+terrain_type = "plains"
+character_spawn = ""
+
+[sub_resource type="Resource" id="Resource_k6gjo"]
+script = ExtResource("2_xk2hq")
+location = Vector2i(2, 4)
+terrain_type = "plains"
+character_spawn = "test enemy"
+
+[sub_resource type="Resource" id="Resource_cyg5c"]
+script = ExtResource("2_xk2hq")
+location = Vector2i(3, 4)
+terrain_type = "plains"
+character_spawn = ""
+
 [resource]
 script = ExtResource("1_yaost")
 map_name = "Test Map"
 map_size = 8
-tile_data = Array[ExtResource("2_xk2hq")]([SubResource("Resource_2tt1e"), SubResource("Resource_lqlfn")])
+tile_data = Array[ExtResource("2_xk2hq")]([SubResource("Resource_2tt1e"), SubResource("Resource_lqlfn"), SubResource("Resource_ylxk1"), SubResource("Resource_ak1k5"), SubResource("Resource_hsfl4"), SubResource("Resource_0ufdx"), SubResource("Resource_j7mfj"), SubResource("Resource_5rnwn"), SubResource("Resource_k6gjo"), SubResource("Resource_cyg5c")])

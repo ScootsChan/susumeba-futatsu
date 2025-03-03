@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3 uid="uid://bkf7gjcsviqns"]
+
+[ext_resource type="Script" path="res://scripts/character_ticker.gd" id="1_g7w5s"]
+[ext_resource type="Texture2D" uid="uid://b5d2l4qh56jf0" path="res://icon.svg" id="2_4nc5s"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ngji"]
+content_margin_left = 32.0
+content_margin_top = 16.0
+content_margin_right = 32.0
+content_margin_bottom = 16.0
+bg_color = Color(0.168627, 0.305882, 0.584314, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.168627, 0.305882, 0.584314, 0)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="Theme" id="Theme_jvf60"]
+HBoxContainer/constants/separation = 16
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_2ngji")
+
+[node name="CharTicker" type="PanelContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme = SubResource("Theme_jvf60")
+script = ExtResource("1_g7w5s")
+
+[node name="MainHBox" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Sprite" type="TextureRect" parent="MainHBox"]
+layout_mode = 2
+texture = ExtResource("2_4nc5s")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="NameLabel" type="Label" parent="MainHBox"]
+layout_mode = 2
+text = "Character Name Here!!"
+
+[node name="HPVBox" type="VBoxContainer" parent="MainHBox"]
+layout_mode = 2
+
+[node name="HPLabel" type="Label" parent="MainHBox/HPVBox"]
+layout_mode = 2
+text = "Health: 10 / 10"
+
+[node name="HPBar" type="ProgressBar" parent="MainHBox/HPVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+max_value = 10.0
+step = 1.0
