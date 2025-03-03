@@ -7,4 +7,4 @@
 [resource]
 script = ExtResource("1_x3wt3")
 team_name = "Test BLUFOR"
-lineup = Array[ExtResource("1_6e8r3")]([ExtResource("2_i1gja")])
+lineup = Array[ExtResource("1_6e8r3")]([ExtResource("2_i1gja"), ExtResource("2_i1gja")])

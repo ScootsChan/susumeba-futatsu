@@ -1,22 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://6evq1w52p54j"]
+[gd_scene load_steps=5 format=3 uid="uid://6evq1w52p54j"]
 
+[ext_resource type="StyleBox" uid="uid://co7ntdu0fqsox" path="res://visuals/ui/player_info_panel.tres" id="1_4f8mo"]
 [ext_resource type="Script" path="res://scripts/main_ui.gd" id="1_djvmp"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_typcm"]
-content_margin_left = 16.0
-content_margin_top = 16.0
-content_margin_right = 8.0
-content_margin_bottom = 8.0
-bg_color = Color(0.105882, 0.141176, 0.278431, 1)
-border_width_left = 4
-border_width_top = 4
-border_color = Color(0.105882, 0.141176, 0.278431, 0)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bcrm2"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
+bg_color = Color(0.392157, 0.211765, 0.294118, 1)
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.392157, 0.211765, 0.294118, 0)
 border_blend = true
-corner_radius_top_left = 24
+corner_radius_bottom_right = 24
 
 [sub_resource type="Theme" id="Theme_j5wdv"]
+EnemyPanel/base_type = &"PanelContainer"
+EnemyPanel/styles/panel = SubResource("StyleBoxFlat_bcrm2")
 PlayerPanel/base_type = &"PanelContainer"
-PlayerPanel/styles/panel = SubResource("StyleBoxFlat_typcm")
+PlayerPanel/styles/panel = ExtResource("1_4f8mo")
 
 [node name="main_ui" type="Control"]
 layout_mode = 3
@@ -50,6 +53,25 @@ text = "BLUFOR"
 horizontal_alignment = 1
 
 [node name="TeamNameLabel" type="Label" parent="PlayerBox/PlayerVBox"]
+layout_mode = 2
+text = "Team Name Here"
+horizontal_alignment = 1
+
+[node name="EnemyBox" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_type_variation = &"EnemyPanel"
+
+[node name="EnemyVBox" type="VBoxContainer" parent="EnemyBox"]
+layout_mode = 2
+
+[node name="OPFORLabel" type="Label" parent="EnemyBox/EnemyVBox"]
+layout_mode = 2
+text = "OPFOR"
+horizontal_alignment = 1
+
+[node name="TeamNameLabel" type="Label" parent="EnemyBox/EnemyVBox"]
 layout_mode = 2
 text = "Team Name Here"
 horizontal_alignment = 1

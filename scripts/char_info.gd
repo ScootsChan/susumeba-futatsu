@@ -6,14 +6,15 @@ extends Window
 @onready var main_vbox: VBoxContainer = $CharContainer/MainVBox
 @onready var act_check: CheckBox = $CharContainer/MainVBox/StatHBox/ActPanel/ActHBox/ActCheck
 @onready var declare_button: Button = $CharContainer/MainVBox/DeclarePanel/DeclareButton
+@onready var sprite: TextureRect = $CharContainer/MainVBox/TitleHBox/Sprite
 
 
 const TEST_CHAR = preload("res://data/characters/test_char.tres")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	load_data(TEST_CHAR)
-	#pass # Replace with function body.
+	#load_data(TEST_CHAR)
+	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -24,6 +25,7 @@ func load_data(data: CharacterData):
 	self.title = data.char_name
 	hp_bar.value = data.health
 	hp_bar.max_value = data.max_health
+	sprite.texture = data.sprite
 	speed_label.text = "Speed: "+str(data.speed)
 	weakness_label.text = "Weaknesses: "+data.weakness
 	if data.acted == true:

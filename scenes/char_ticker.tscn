@@ -1,27 +1,72 @@
-[gd_scene load_steps=5 format=3 uid="uid://bkf7gjcsviqns"]
+[gd_scene load_steps=11 format=3 uid="uid://bkf7gjcsviqns"]
 
+[ext_resource type="StyleBox" uid="uid://gjn2an8rcles" path="res://visuals/ui/blufor_ticker.tres" id="1_3ixdb"]
 [ext_resource type="Script" path="res://scripts/character_ticker.gd" id="1_g7w5s"]
 [ext_resource type="Texture2D" uid="uid://b5d2l4qh56jf0" path="res://icon.svg" id="2_4nc5s"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ngji"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_enydj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vhjf8"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.6, 0.6, 0.6, 0.192157)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2py6d"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.6, 0.6, 0.6, 0.427451)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fdga3"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mqthf"]
+bg_color = Color(0.6, 0.6, 0.6, 0.192157)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pacpd"]
 content_margin_left = 32.0
 content_margin_top = 16.0
 content_margin_right = 32.0
 content_margin_bottom = 16.0
-bg_color = Color(0.168627, 0.305882, 0.584314, 1)
+bg_color = Color(0.698039, 0.321569, 0.4, 1)
 border_width_left = 8
 border_width_top = 8
 border_width_right = 8
 border_width_bottom = 8
-border_color = Color(0.168627, 0.305882, 0.584314, 0)
+border_color = Color(0.698039, 0.321569, 0.4, 0)
 corner_radius_top_left = 12
 corner_radius_top_right = 12
 corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
 [sub_resource type="Theme" id="Theme_jvf60"]
+Button/styles/disabled = SubResource("StyleBoxEmpty_enydj")
+Button/styles/hover = SubResource("StyleBoxFlat_vhjf8")
+Button/styles/hover_pressed = SubResource("StyleBoxFlat_2py6d")
+Button/styles/normal = SubResource("StyleBoxEmpty_fdga3")
+Button/styles/pressed = SubResource("StyleBoxFlat_mqthf")
+EnemyPanel/base_type = &"PanelContainer"
+EnemyPanel/styles/panel = SubResource("StyleBoxFlat_pacpd")
 HBoxContainer/constants/separation = 16
-PanelContainer/styles/panel = SubResource("StyleBoxFlat_2ngji")
+PanelContainer/styles/panel = ExtResource("1_3ixdb")
 
 [node name="CharTicker" type="PanelContainer"]
 offset_right = 40.0
@@ -54,3 +99,8 @@ layout_mode = 2
 size_flags_vertical = 3
 max_value = 10.0
 step = 1.0
+
+[node name="Select" type="Button" parent="."]
+layout_mode = 2
+
+[connection signal="button_up" from="Select" to="." method="_on_select_button_up"]

@@ -1,13 +1,18 @@
 extends Control
 @onready var team_name_label: Label = $PlayerBox/PlayerVBox/TeamNameLabel
 @onready var player_vbox: VBoxContainer = $PlayerBox/PlayerVBox
+@onready var enemy_name_label: Label = $EnemyBox/EnemyVBox/TeamNameLabel
+@onready var enemy_vbox: VBoxContainer = $EnemyBox/EnemyVBox
+
 
 const CHAR_TICKER = preload("res://scenes/char_ticker.tscn")
 const TEST_BLUFOR = preload("res://data/teams/test_BLUFOR.tres")
+const TEST_OPFOR = preload("res://data/teams/test_OPFOR.tres")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	load_data(TEST_BLUFOR)
+	load_player_data(TEST_BLUFOR)
+	load_enemy_data(TEST_OPFOR)
 	#pass # Replace with function body.
 
 
@@ -15,9 +20,17 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-func load_data(player_data: TeamData):
+func load_player_data(player_data: TeamData):
 	team_name_label.text = player_data.team_name
 	for n in player_data.lineup.size():
 		var player_ticker = CHAR_TICKER.instantiate()
-		player_ticker.load_data(player_data.lineup[n])
 		player_vbox.add_child(player_ticker)
+		player_ticker.load_data(player_data.lineup[n])
+
+func load_enemy_data(enemy_data: TeamData):
+	enemy_name_label.text = enemy_data.team_name
+	for n in enemy_data.lineup.size():
+		var enemy_ticker = CHAR_TICKER.instantiate()
+		enemy_vbox.add_child(enemy_ticker)
+		enemy_ticker.theme_type_variation = "EnemyPanel"
+		enemy_ticker.load_data(enemy_data.lineup[n])

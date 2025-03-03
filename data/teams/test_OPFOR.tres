@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="TeamData" load_steps=4 format=3 uid="uid://btpwmotwst626"]
+
+[ext_resource type="Script" path="res://scripts/resources/character_data.gd" id="1_wqnqc"]
+[ext_resource type="Script" path="res://scripts/resources/team.gd" id="2_iu7ii"]
+[ext_resource type="Resource" uid="uid://bvbqro74lan3o" path="res://data/characters/test_enemy.tres" id="2_ymeqc"]
+
+[resource]
+script = ExtResource("2_iu7ii")
+team_name = "Evil-Doers!!"
+lineup = Array[ExtResource("1_wqnqc")]([ExtResource("2_ymeqc"), ExtResource("2_ymeqc"), ExtResource("2_ymeqc")])

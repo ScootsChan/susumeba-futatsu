@@ -23,3 +23,5 @@ tile_set = SubResource("TileSet_14opu")
 script = ExtResource("2_3mvoa")
 
 [node name="main_ui" parent="." instance=ExtResource("3_twcmv")]
+offset_right = 1280.0
+offset_bottom = 720.0
