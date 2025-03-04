@@ -21,6 +21,7 @@ sources/0 = SubResource("TileSetAtlasSource_rcv67")
 [node name="CombatTiles" type="TileMapLayer"]
 texture_filter = 1
 tile_set = SubResource("TileSet_14opu")
+collision_enabled = false
 script = ExtResource("2_3mvoa")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -36,3 +37,4 @@ offset_left = -640.0
 offset_top = -360.0
 offset_right = -640.0
 offset_bottom = -360.0
+mouse_filter = 1

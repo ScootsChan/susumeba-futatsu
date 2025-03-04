@@ -11,7 +11,7 @@ const TEST_CHAR = preload("res://data/characters/test_char.tres")
 
 @onready var select_texture: Sprite2D = $SelectionTexture
 @onready var cast: ShapeCast2D = $CharacterBody/Cast
-@onready var char_body: CharacterBody2D = $CharacterBody
+@onready var char_body: Area2D = $CharacterBody
 
 var hovered = false
 var selected = false
@@ -80,9 +80,11 @@ func _on_character_body_input_event(viewport: Node, event: InputEvent, shape_idx
 
 func _on_character_body_mouse_entered() -> void:
 	hovered = true
+	#print("mousey entered! "+str(self)+" at "+str(get_global_mouse_position()))
 
 func _on_character_body_mouse_exited() -> void:
 	hovered = false
+	#print("mousey exited! "+str(self)+" at "+str(get_global_mouse_position()))
 
 func select():
 	if selected: selected = false

@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=5 format=3 uid="uid://b5aupgtqi11l"]
+
+[ext_resource type="Script" uid="uid://1up4qd7jnldc" path="res://scripts/resources/attack.gd" id="1_46oio"]
+[ext_resource type="Script" uid="uid://oxpk3ir8hm3h" path="res://scripts/resources/character_data.gd" id="2_l7hv7"]
+[ext_resource type="Texture2D" uid="uid://b5d2l4qh56jf0" path="res://icon.svg" id="3_l7hv7"]
+
+[sub_resource type="Resource" id="Resource_edl7y"]
+script = ExtResource("1_46oio")
+attack_name = "anti-mecha man-portable"
+range = 2
+damage = 2
+damage_type = "piercing"
+in_range = false
+metadata/_custom_type_script = "uid://1up4qd7jnldc"
+
+[resource]
+script = ExtResource("2_l7hv7")
+char_name = "Supporter!"
+allegiance = "BLUFOR"
+sprite = ExtResource("3_l7hv7")
+acted = false
+speed = 1
+weakness = "explosive"
+health = 4
+max_health = 4
+attacks = Array[ExtResource("1_46oio")]([SubResource("Resource_edl7y")])
+metadata/_custom_type_script = "uid://oxpk3ir8hm3h"

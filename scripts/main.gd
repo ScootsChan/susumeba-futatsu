@@ -24,6 +24,13 @@ var damage_icons = {
 	"electrical": Rect2(512,0,128,128)
 }
 
+var postures = {
+	"line ahead": [Vector2i(0,2),Vector2i(0,1),Vector2i(0,0),Vector2i(0,-1),Vector2i(0,3),Vector2i(0,4)],
+	"line abreast": [Vector2i(0,0),Vector2i(1,0),Vector2i(-1,0),Vector2i(-2,0),Vector2i(2,0),Vector2i(3,0)],
+	"echelon": [Vector2i(0,0),Vector2i(1,0),Vector2i(-1,0),Vector2i(2,1),Vector2i(-2,-2),Vector2i(3,2)],
+	"escort": [Vector2i(0,0),Vector2i(0,1),Vector2i(1,0),Vector2i(-1,0),Vector2i(0,-1),Vector2i(0,2)]
+}
+
 func turn_end(team: TeamData):
 	for n in team.lineup.size():
 		team.lineup[n].acted = false

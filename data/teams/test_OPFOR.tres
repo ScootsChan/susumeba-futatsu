@@ -1,10 +1,45 @@
-[gd_resource type="Resource" script_class="TeamData" load_steps=4 format=3 uid="uid://btpwmotwst626"]
+[gd_resource type="Resource" script_class="TeamData" load_steps=9 format=3 uid="uid://btpwmotwst626"]
 
 [ext_resource type="Script" uid="uid://oxpk3ir8hm3h" path="res://scripts/resources/character_data.gd" id="1_wqnqc"]
 [ext_resource type="Script" uid="uid://ckj6yl4jn6h5h" path="res://scripts/resources/team.gd" id="2_iu7ii"]
 [ext_resource type="Resource" uid="uid://bvbqro74lan3o" path="res://data/characters/test_enemy.tres" id="2_ymeqc"]
+[ext_resource type="Script" uid="uid://1up4qd7jnldc" path="res://scripts/resources/attack.gd" id="3_p3xgx"]
+[ext_resource type="Texture2D" uid="uid://b5d2l4qh56jf0" path="res://icon.svg" id="4_weanw"]
+
+[sub_resource type="Resource" id="Resource_8ws5t"]
+script = ExtResource("3_p3xgx")
+attack_name = "Anti-Tank Round"
+range = 2
+damage = 2
+damage_type = "explosive"
+in_range = false
+
+[sub_resource type="Resource" id="Resource_oclxg"]
+script = ExtResource("1_wqnqc")
+char_name = "Test Enemy 2"
+allegiance = "OPFOR"
+sprite = ExtResource("4_weanw")
+acted = false
+speed = 1
+weakness = "piercing"
+health = 5
+max_health = 5
+attacks = Array[ExtResource("3_p3xgx")]([SubResource("Resource_8ws5t")])
+
+[sub_resource type="Resource" id="Resource_rvv4n"]
+script = ExtResource("1_wqnqc")
+char_name = "Test Enemy 3"
+allegiance = "OPFOR"
+sprite = ExtResource("4_weanw")
+acted = false
+speed = 1
+weakness = "piercing"
+health = 5
+max_health = 5
+attacks = Array[ExtResource("3_p3xgx")]([SubResource("Resource_8ws5t")])
 
 [resource]
 script = ExtResource("2_iu7ii")
 team_name = "Evil-Doers!!"
-lineup = Array[ExtResource("1_wqnqc")]([ExtResource("2_ymeqc"), ExtResource("2_ymeqc"), ExtResource("2_ymeqc")])
+lineup = Array[ExtResource("1_wqnqc")]([ExtResource("2_ymeqc"), SubResource("Resource_oclxg"), SubResource("Resource_rvv4n")])
+posture = "line abreast"
