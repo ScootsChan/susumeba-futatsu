@@ -30,6 +30,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 1
 theme = SubResource("Theme_j5wdv")
 script = ExtResource("1_djvmp")
 
@@ -79,6 +80,7 @@ text = "Team Name Here"
 horizontal_alignment = 1
 
 [node name="action_menu" parent="." instance=ExtResource("3_e6fyy")]
+visible = false
 layout_mode = 1
 offset_left = -196.0
 offset_top = -62.5

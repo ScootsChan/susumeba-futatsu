@@ -1,7 +1,9 @@
 extends Sprite2D
+class_name Character
 @export var char_data: CharacterData
 
 const TEST_CHAR = preload("res://data/characters/test_char.tres")
+const MOVE_BUTTON = preload("res://scenes/move_button.tscn")
 
 @onready var name_label: Label = $CharControl/CharVBox/NameLabel
 @onready var allegiance_label: Label = $CharControl/CharVBox/AllegianceLabel
@@ -17,6 +19,7 @@ var hovered = false
 var selected = false
 var targeted = false
 signal actionable_select
+signal moved
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -98,6 +101,10 @@ func select():
 	if selected: selected = false
 	else: selected = true
 	
-	if Main.turn == "player":
-		actionable_select.emit(char_data)
+	if Main.turn == "player" and char_data.acted == false:
+		actionable_select.emit(self)
 		print("ayo there's an actionable select done by "+str(self)+"!!")
+
+func ordered_movement(target: Vector2i):
+	self.position = target
+	emit_signal("moved")

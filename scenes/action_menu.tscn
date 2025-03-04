@@ -46,3 +46,5 @@ text = "Movement"
 [node name="AttacksButton" type="Button" parent="ActionsVBox"]
 layout_mode = 2
 text = "Attacks"
+
+[connection signal="button_up" from="ActionsVBox/MovementButton" to="." method="_on_movement_button_button_up"]

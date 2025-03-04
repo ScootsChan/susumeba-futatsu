@@ -6,6 +6,7 @@ class_name CharacterData
 @export var allegiance: String #side: BLUFOR, OPFOR, NEUFOR
 @export var sprite: Texture2D
 @export var acted = false
+@export var moved = false
 
 @export var speed: int
 @export var weakness: String

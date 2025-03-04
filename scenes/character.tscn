@@ -19,6 +19,7 @@ Label/font_sizes/font_size = 48
 radius = 90.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ace0r"]
+resource_local_to_scene = true
 
 [node name="Character" type="Sprite2D"]
 z_index = 2
