@@ -11,6 +11,7 @@ range = 3
 damage = 3
 damage_type = "piercing"
 in_range = false
+targets = 1
 
 [resource]
 script = ExtResource("1_t05yg")
@@ -18,7 +19,7 @@ char_name = "Test"
 allegiance = "BLUFOR"
 sprite = ExtResource("3_xdiou")
 acted = false
-speed = 0
+speed = 2
 weakness = "corrosive"
 health = 10
 max_health = 10

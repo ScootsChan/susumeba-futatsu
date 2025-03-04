@@ -8,13 +8,15 @@ const TEST_CHAR = preload("res://data/characters/test_char.tres")
 @onready var char_vbox: VBoxContainer = $CharControl/CharVBox
 @onready var hp_bar: ProgressBar = $CharControl/CharVBox/HPBar
 
-
+@onready var target_texture: AnimatedSprite2D = $TargetTexture
 @onready var select_texture: Sprite2D = $SelectionTexture
 @onready var cast: ShapeCast2D = $CharacterBody/Cast
 @onready var char_body: Area2D = $CharacterBody
 
 var hovered = false
 var selected = false
+var targeted = false
+signal actionable_select
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -26,10 +28,16 @@ func _process(delta: float) -> void:
 		char_vbox.visible = true
 	else:
 		char_vbox.visible = false
-	if selected:
+	
+	if selected and char_data.allegiance == "BLUFOR":
 		select_texture.visible = true
+	elif selected:
+		target_texture.visible = true
+		targeted = true
 	else:
 		select_texture.visible = false
+		target_texture.visible = false
+		targeted = false
 	
 	hp_bar.value = char_data.health
 	hp_bar.max_value = char_data.max_health
@@ -89,3 +97,7 @@ func _on_character_body_mouse_exited() -> void:
 func select():
 	if selected: selected = false
 	else: selected = true
+	
+	if Main.turn == "player":
+		actionable_select.emit(char_data)
+		print("ayo there's an actionable select done by "+str(self)+"!!")

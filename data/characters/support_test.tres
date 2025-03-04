@@ -11,6 +11,7 @@ range = 2
 damage = 2
 damage_type = "piercing"
 in_range = false
+targets = 1
 metadata/_custom_type_script = "uid://1up4qd7jnldc"
 
 [resource]

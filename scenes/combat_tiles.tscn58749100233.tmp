@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://kd8mdi67fcjp"]
+
+[ext_resource type="Texture2D" uid="uid://cqdrv50bg1w2i" path="res://susumeba-futatsu-spritesheet.png" id="1_dfbfx"]
+[ext_resource type="Script" uid="uid://cgxb7p5pgvf8s" path="res://scripts/combat_tiles.gd" id="2_3mvoa"]
+[ext_resource type="Script" uid="uid://b7or8jsptkg7j" path="res://scripts/camera_2d.gd" id="3_gvqa4"]
+[ext_resource type="PackedScene" uid="uid://6evq1w52p54j" path="res://scenes/main_ui.tscn" id="3_twcmv"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rcv67"]
+texture = ExtResource("1_dfbfx")
+texture_region_size = Vector2i(104, 92)
+2:1/0 = 0
+2:0/0 = 0
+3:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_14opu"]
+tile_shape = 3
+tile_offset_axis = 1
+tile_size = Vector2i(102, 88)
+sources/0 = SubResource("TileSetAtlasSource_rcv67")
+
+[node name="CombatTiles" type="TileMapLayer"]
+texture_filter = 1
+tile_set = SubResource("TileSet_14opu")
+collision_enabled = false
+script = ExtResource("2_3mvoa")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("3_gvqa4")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+offset = Vector2(640, 360)
+transform = Transform2D(1, 0, 0, 1, 640, 360)
+
+[node name="main_ui" parent="Camera2D/CanvasLayer" instance=ExtResource("3_twcmv")]
+custom_minimum_size = Vector2(1280, 720)
+offset_left = -640.0
+offset_top = -360.0
+offset_right = -640.0
+offset_bottom = -360.0
+mouse_filter = 1

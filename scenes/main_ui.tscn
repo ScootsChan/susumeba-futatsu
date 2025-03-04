@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://6evq1w52p54j"]
+[gd_scene load_steps=6 format=3 uid="uid://6evq1w52p54j"]
 
 [ext_resource type="StyleBox" uid="uid://co7ntdu0fqsox" path="res://visuals/ui/player_info_panel.tres" id="1_4f8mo"]
 [ext_resource type="Script" uid="uid://n8wvncsk4ebd" path="res://scripts/main_ui.gd" id="1_djvmp"]
+[ext_resource type="PackedScene" uid="uid://cltfp7aey0aym" path="res://scenes/action_menu.tscn" id="3_e6fyy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bcrm2"]
 content_margin_left = 8.0
@@ -59,6 +60,7 @@ text = "Team Name Here"
 horizontal_alignment = 1
 
 [node name="EnemyBox" type="PanelContainer" parent="."]
+layout_mode = 0
 offset_right = 159.0
 offset_bottom = 74.0
 theme_type_variation = &"EnemyPanel"
@@ -75,3 +77,9 @@ horizontal_alignment = 1
 layout_mode = 2
 text = "Team Name Here"
 horizontal_alignment = 1
+
+[node name="action_menu" parent="." instance=ExtResource("3_e6fyy")]
+layout_mode = 1
+offset_left = -196.0
+offset_top = -62.5
+offset_bottom = 62.5

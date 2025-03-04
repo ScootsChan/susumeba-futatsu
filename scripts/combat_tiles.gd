@@ -10,6 +10,8 @@ const GO_FORTH = preload("res://scenes/go_forth_box.tscn")
 const PREPARE_THYSELF = preload("res://scenes/prepare_thyself.tscn")
 const TEST_BLUFOR = preload("res://data/teams/test_BLUFOR.tres")
 const TEST_OPFOR = preload("res://data/teams/test_OPFOR.tres")
+const ACTION_MENU = preload("res://scenes/action_menu.tscn")
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	load_map_data(TEST_MAP, TEST_BLUFOR, TEST_OPFOR)
@@ -20,8 +22,13 @@ func _process(delta: float) -> void:
 	pass
 
 func player_turn(player_data: TeamData):
+	Main.turn = "player"
 	var dont_look_back = GO_FORTH.instantiate()
 	main_ui.add_child(dont_look_back)
+	
+	for n in player_data.lineup.size():
+		player_data.lineup[n].acted = false
+		
 
 func load_map_data(data:MapData, player_data: TeamData, enemy_data: TeamData):
 	var player_starting_cell: Vector2i
@@ -35,6 +42,7 @@ func load_map_data(data:MapData, player_data: TeamData, enemy_data: TeamData):
 				self.add_child(new_char)
 				new_char.position = map_to_local(data.tile_data[n].location+(Main.postures[player_data.posture])[z])
 				new_char.load_data(player_data.lineup[z])
+				new_char.actionable_select.connect(self.begin_action)
 				new_char.load_char()
 		if data.tile_data[n].extra_data == "enemy start":
 			for z in enemy_data.lineup.size():
@@ -57,3 +65,7 @@ func load_battle_data(player_data: TeamData, enemy_data: TeamData):
 	for n in player_data.lineup.size():
 		var char_ticker = CHAR_TICKER.instantiate()
 		main_ui.add_child(char_ticker)
+
+func begin_action(char_data: CharacterData):
+	main_ui.action_menu.visible = true
+	main_ui.action_menu.load_char(char_data)

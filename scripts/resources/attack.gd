@@ -6,3 +6,4 @@ class_name Attack
 @export var damage: int
 @export var damage_type: String
 @export var in_range = false
+@export var targets: int

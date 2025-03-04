@@ -31,6 +31,8 @@ var postures = {
 	"escort": [Vector2i(0,0),Vector2i(0,1),Vector2i(1,0),Vector2i(-1,0),Vector2i(0,-1),Vector2i(0,2)]
 }
 
+var turn: String
+
 func turn_end(team: TeamData):
 	for n in team.lineup.size():
 		team.lineup[n].acted = false

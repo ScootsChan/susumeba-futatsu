@@ -3,6 +3,7 @@ extends Control
 @onready var player_vbox: VBoxContainer = $PlayerBox/PlayerVBox
 @onready var enemy_name_label: Label = $EnemyBox/EnemyVBox/TeamNameLabel
 @onready var enemy_vbox: VBoxContainer = $EnemyBox/EnemyVBox
+@onready var action_menu: PanelContainer = $action_menu
 
 
 const CHAR_TICKER = preload("res://scenes/char_ticker.tscn")
