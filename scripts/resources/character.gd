@@ -98,7 +98,7 @@ func auto_attack():
 			print("no targets found for "+str(self))
 
 func die():
-	rotation = 70
+	rotation = 80
 	
 
 func _on_character_body_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
@@ -128,7 +128,7 @@ func ordered_movement(target: Vector2i):
 
 func find_targets(attack: Attack):
 	var range = attack.range
-	cast.shape.radius = range*Main.HEX_DISTANCE*2
+	cast.shape.radius = (range+1)*Main.HEX_DISTANCE*1.25
 	print(str(self)+" is looking for targets...")
 	await get_tree().process_frame
 	if cast.is_colliding():
@@ -137,7 +137,6 @@ func find_targets(attack: Attack):
 			if collider is Character:
 				print("available target for "+str(self)+": "+str(cast.collision_result[x]))
 				if collider.char_data.allegiance != self.char_data.allegiance and collider.char_data.health > 0:
-					target_found.emit(collider, attack)
-					char_data.acted = true
+					target_found.emit(collider, attack, char_data)
 				elif collider.char_data.allegiance == char_data.allegiance:
 					print(str(self)+" SPOTTED FRIENDLY: "+str(collider))

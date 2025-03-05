@@ -18,15 +18,30 @@ const TARGET_BUTTON = preload("res://scenes/target_button.tscn")
 
 signal cleaned
 var selected_char: Character
+var player: TeamData
+var enemy: TeamData
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	load_map_data(TEST_MAP, TEST_BLUFOR, TEST_OPFOR)
-	player_turn(TEST_BLUFOR)
+	player = TEST_BLUFOR
+	enemy = TEST_OPFOR
+	player_turn(player)
 	#pass
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if Main.turn == "player":
+		if check_acted(player) == true:
+			enemy_turn(enemy)
+	else:
+		if check_acted(enemy) == true:
+			player_turn(player)
+			
+func check_acted(checkee: TeamData) -> bool:
+	for n in checkee.lineup.size():
+		if checkee.lineup[n].acted == false:
+			return false
+	return true
 
 func player_turn(player_data: TeamData):
 	Main.turn = "player"
@@ -36,7 +51,11 @@ func player_turn(player_data: TeamData):
 	for n in player_data.lineup.size():
 		player_data.lineup[n].acted = false
 		player_data.lineup[n].moved = false
-		
+
+func enemy_turn(enemy_data: TeamData):
+	Main.turn = "enemy"
+	var tatakae = PREPARE_THYSELF.instantiate()
+	move_buttons.add_child(tatakae)
 
 func load_map_data(data:MapData, player_data: TeamData, enemy_data: TeamData):
 	var player_starting_cell: Vector2i
@@ -75,6 +94,8 @@ func load_battle_data(player_data: TeamData, enemy_data: TeamData):
 func begin_action(char: Character):
 	main_ui.action_menu.visible = true
 	main_ui.action_menu.load_char(char)
+	if selected_char != null:
+		main_ui.action_menu.attack_requested.disconnect(selected_char.find_targets)
 	main_ui.action_menu.attack_requested.connect(char.find_targets)
 	selected_char = char
 
@@ -98,12 +119,13 @@ func character_movement(char: Character): ################# This entire movement
 	char_data.moved = true
 	main_ui.action_menu.movement_button.disabled = true
 
-func place_target(target: Character, attack: Attack):
+func place_target(target: Character, attack: Attack, attacker: CharacterData):
 	var target_button = TARGET_BUTTON.instantiate()
 	move_buttons.add_child(target_button)
 	target_button.position = target.position-Vector2(50,50)
 	target_button.assigned_target = target
 	target_button.attack = attack
+	target_button.attacker = attacker
 	target_button.target_chosen.connect(bangbang)
 
 func skibidi_clean():
@@ -111,7 +133,8 @@ func skibidi_clean():
 		move_buttons.get_children()[n].queue_free()
 	cleaned.emit()
 
-func bangbang(target: Character, attack: Attack):
+func bangbang(target: Character, attack: Attack, attacker: CharacterData):
 	target.take_damage(attack)
 	main_ui.action_menu.visible = false
+	attacker.acted = true
 	skibidi_clean()

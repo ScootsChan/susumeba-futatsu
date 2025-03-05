@@ -38,11 +38,11 @@ func _on_movement_button_button_up() -> void:
 	#print(str(char))
 	#movement_button.disabled = true
 
-func _on_attacks_button_button_up() -> void:
+#func _on_attacks_button_button_up() -> void:
 	#var attack_menu = ATTACK_MENU.instantiate()
 	#add_child(attack_menu)
 	#attack_menu.attack_requested.connect(pass_attack_info)
-	attack_requested.emit()
+	#attack_requested.emit()
 
 func pass_attack_info(attack: Attack):
 	attack_requested.emit(attack)

@@ -18,7 +18,7 @@ Label/font_sizes/font_size = 48
 [sub_resource type="CircleShape2D" id="CircleShape2D_ewc6y"]
 radius = 90.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ace0r"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_my7n2"]
 resource_local_to_scene = true
 
 [node name="Character" type="Sprite2D"]
@@ -86,7 +86,7 @@ z_index = 2
 shape = SubResource("CircleShape2D_ewc6y")
 
 [node name="Cast" type="ShapeCast2D" parent="CharacterBody"]
-shape = SubResource("CircleShape2D_ace0r")
+shape = SubResource("CircleShape2D_my7n2")
 target_position = Vector2(0, 0)
 collide_with_areas = true
 
