@@ -20,6 +20,7 @@ char_name = "Supporter!"
 allegiance = "BLUFOR"
 sprite = ExtResource("3_l7hv7")
 acted = false
+moved = false
 speed = 1
 weakness = "explosive"
 health = 4

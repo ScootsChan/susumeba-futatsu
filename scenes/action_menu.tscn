@@ -47,4 +47,10 @@ text = "Movement"
 layout_mode = 2
 text = "Attacks"
 
+[node name="EndTurn" type="Button" parent="ActionsVBox"]
+layout_mode = 2
+text = "End Turn Early"
+
 [connection signal="button_up" from="ActionsVBox/MovementButton" to="." method="_on_movement_button_button_up"]
+[connection signal="button_up" from="ActionsVBox/AttacksButton" to="." method="_on_attacks_button_button_up"]
+[connection signal="button_up" from="ActionsVBox/EndTurn" to="." method="_on_end_turn_button_up"]

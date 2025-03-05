@@ -19,6 +19,7 @@ char_name = "Test"
 allegiance = "BLUFOR"
 sprite = ExtResource("3_xdiou")
 acted = false
+moved = false
 speed = 2
 weakness = "corrosive"
 health = 10

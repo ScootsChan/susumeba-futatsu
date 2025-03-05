@@ -1,0 +1,135 @@
+[gd_scene load_steps=12 format=3 uid="uid://chuvo76twu723"]
+
+[ext_resource type="StyleBox" uid="uid://gjn2an8rcles" path="res://visuals/ui/blufor_ticker.tres" id="1_2wssq"]
+[ext_resource type="Script" uid="uid://byqfrahm5hdn" path="res://scripts/attack_menu.gd" id="2_5pxjm"]
+[ext_resource type="Texture2D" uid="uid://baodj03vunghj" path="res://visuals/ui-spritesheet.png" id="2_egmup"]
+[ext_resource type="Texture2D" uid="uid://b5d2l4qh56jf0" path="res://icon.svg" id="2_ktxt7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ktxt7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5pxjm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8j273"]
+bg_color = Color(0.29, 0.29, 0.29, 0.588235)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5pxjm"]
+content_margin_left = 12.0
+content_margin_top = 12.0
+content_margin_right = 12.0
+content_margin_bottom = 12.0
+bg_color = Color(0.105882, 0.141176, 0.278431, 1)
+border_width_left = 12
+border_width_top = 12
+border_width_right = 12
+border_width_bottom = 12
+border_color = Color(0.105882, 0.141176, 0.278431, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ktxt7"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.178335, 0.228982, 0.424609, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="Theme" id="Theme_5pxjm"]
+Button/styles/disabled = SubResource("StyleBoxEmpty_ktxt7")
+Button/styles/focus = SubResource("StyleBoxEmpty_5pxjm")
+Button/styles/hover = SubResource("StyleBoxFlat_8j273")
+Button/styles/normal = SubResource("StyleBoxFlat_5pxjm")
+HBoxContainer/constants/separation = 16
+MiniPanel/base_type = &"PanelContainer"
+MiniPanel/styles/panel = SubResource("StyleBoxFlat_ktxt7")
+PanelContainer/styles/panel = ExtResource("1_2wssq")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8j273"]
+atlas = ExtResource("2_egmup")
+region = Rect2(256, 0, 128, 128)
+
+[node name="attack_menu" type="PanelContainer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -90.0
+offset_right = 535.0
+grow_vertical = 0
+theme = SubResource("Theme_5pxjm")
+script = ExtResource("2_5pxjm")
+
+[node name="AttackVBox" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="TitleHBox" type="HBoxContainer" parent="AttackVBox"]
+layout_mode = 2
+alignment = 1
+
+[node name="Sprite" type="TextureRect" parent="AttackVBox/TitleHBox"]
+layout_mode = 2
+texture = ExtResource("2_ktxt7")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="CharLabel" type="Label" parent="AttackVBox/TitleHBox"]
+layout_mode = 2
+text = "Name here"
+
+[node name="AttackMargin" type="MarginContainer" parent="AttackVBox"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="AttackVBox/AttackMargin"]
+layout_mode = 2
+
+[node name="AttackHBox" type="HBoxContainer" parent="AttackVBox/AttackMargin"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="AttackIcon" type="TextureRect" parent="AttackVBox/AttackMargin/AttackHBox"]
+layout_mode = 2
+mouse_filter = 2
+texture = SubResource("AtlasTexture_8j273")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="DMGTypePanel" type="PanelContainer" parent="AttackVBox/AttackMargin/AttackHBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"MiniPanel"
+
+[node name="DamageType" type="Label" parent="AttackVBox/AttackMargin/AttackHBox/DMGTypePanel"]
+layout_mode = 2
+text = "Burn"
+
+[node name="AttackNameLabel" type="Label" parent="AttackVBox/AttackMargin/AttackHBox"]
+layout_mode = 2
+text = "Attack Name Here"
+
+[node name="RangePanel" type="PanelContainer" parent="AttackVBox/AttackMargin/AttackHBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"MiniPanel"
+
+[node name="RangeLabel" type="Label" parent="AttackVBox/AttackMargin/AttackHBox/RangePanel"]
+layout_mode = 2
+text = "Range: 4"
+
+[node name="DamagePanel" type="PanelContainer" parent="AttackVBox/AttackMargin/AttackHBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"MiniPanel"
+
+[node name="DamageLabel" type="Label" parent="AttackVBox/AttackMargin/AttackHBox/DamagePanel"]
+layout_mode = 2
+text = "Damage: 2"
+
+[connection signal="button_up" from="AttackVBox/AttackMargin/Button" to="." method="_on_button_button_up"]

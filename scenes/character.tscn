@@ -88,6 +88,7 @@ shape = SubResource("CircleShape2D_ewc6y")
 [node name="Cast" type="ShapeCast2D" parent="CharacterBody"]
 shape = SubResource("CircleShape2D_ace0r")
 target_position = Vector2(0, 0)
+collide_with_areas = true
 
 [node name="TargetTexture" type="AnimatedSprite2D" parent="."]
 visible = false

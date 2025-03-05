@@ -1,32 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://ca5kus7vt7iap"]
+[gd_scene load_steps=3 format=3 uid="uid://ca5kus7vt7iap"]
 
 [ext_resource type="Script" uid="uid://cw07iu16bbbad" path="res://scripts/move_button.gd" id="1_tkqq8"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tkqq8"]
-bg_color = Color(0, 0.51, 0.1275, 0.784314)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yug4k"]
-bg_color = Color(0, 0.8, 0.226667, 0.784314)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hnxqx"]
-bg_color = Color(0, 0.8, 0.227451, 0.219608)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-
-[sub_resource type="Theme" id="Theme_vmy1e"]
-Button/styles/hover = SubResource("StyleBoxFlat_tkqq8")
-Button/styles/normal = SubResource("StyleBoxFlat_yug4k")
-Button/styles/pressed = SubResource("StyleBoxFlat_hnxqx")
+[ext_resource type="Theme" uid="uid://b3j0k4osjpm0k" path="res://visuals/ui/move_button.tres" id="1_yug4k"]
 
 [node name="move_button" type="Button"]
 anchors_preset = 8
@@ -41,7 +16,7 @@ offset_bottom = 12.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.785398
-theme = SubResource("Theme_vmy1e")
+theme = ExtResource("1_yug4k")
 script = ExtResource("1_tkqq8")
 
 [connection signal="button_up" from="." to="." method="_on_button_up"]

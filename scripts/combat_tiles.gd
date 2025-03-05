@@ -4,9 +4,9 @@ const TEST_MAP = preload("res://data/maps/test_map.tres")
 const CHARACTER = preload("res://scenes/character.tscn")
 const CHAR_TICKER = preload("res://scenes/char_ticker.tscn")
 @onready var cam: Camera2D = $Camera2D
-@onready var main_ui: Control = $Camera2D/CanvasLayer/main_ui
+@onready var main_ui: Control = $Camera2D/MainCanvas/main_ui
 @onready var move_buttons: Control = $CanvasLayer/MoveButtons
-
+@onready var main_canvas: CanvasLayer = $Camera2D/MainCanvas
 
 const GO_FORTH = preload("res://scenes/go_forth_box.tscn")
 const PREPARE_THYSELF = preload("res://scenes/prepare_thyself.tscn")
@@ -14,6 +14,7 @@ const TEST_BLUFOR = preload("res://data/teams/test_BLUFOR.tres")
 const TEST_OPFOR = preload("res://data/teams/test_OPFOR.tres")
 const ACTION_MENU = preload("res://scenes/action_menu.tscn")
 const MOVE_BUTTON = preload("res://scenes/move_button.tscn")
+const TARGET_BUTTON = preload("res://scenes/target_button.tscn")
 
 signal cleaned
 var selected_char: Character
@@ -30,7 +31,7 @@ func _process(delta: float) -> void:
 func player_turn(player_data: TeamData):
 	Main.turn = "player"
 	var dont_look_back = GO_FORTH.instantiate()
-	main_ui.add_child(dont_look_back)
+	move_buttons.add_child(dont_look_back)
 	
 	for n in player_data.lineup.size():
 		player_data.lineup[n].acted = false
@@ -51,6 +52,7 @@ func load_map_data(data:MapData, player_data: TeamData, enemy_data: TeamData):
 				new_char.load_data(player_data.lineup[z])
 				new_char.actionable_select.connect(self.begin_action)
 				main_ui.action_menu.movement_requested.connect(character_movement)
+				new_char.target_found.connect(self.place_target)
 				new_char.load_char()
 		if data.tile_data[n].extra_data == "enemy start":
 			for z in enemy_data.lineup.size():
@@ -73,6 +75,7 @@ func load_battle_data(player_data: TeamData, enemy_data: TeamData):
 func begin_action(char: Character):
 	main_ui.action_menu.visible = true
 	main_ui.action_menu.load_char(char)
+	main_ui.action_menu.attack_requested.connect(char.find_targets)
 	selected_char = char
 
 func character_movement(char: Character): ################# This entire movement section is horrendous. I apologize if you need to clean up my mess. -Danny
@@ -85,7 +88,7 @@ func character_movement(char: Character): ################# This entire movement
 		char.moved.connect(skibidi_clean)
 		for n in cells.size():
 			var move_here = MOVE_BUTTON.instantiate()
-			print("shittin out my goddamn buttons at "+str(cells[n]))
+			#print("shittin out my goddamn buttons at "+str(cells[n]))
 			move_buttons.add_child(move_here)
 			move_here.position = map_to_local(cells[n])-Vector2(0,20)
 			move_here.move_here.connect(selected_char.ordered_movement.bind(map_to_local(cells[n])))
@@ -95,7 +98,20 @@ func character_movement(char: Character): ################# This entire movement
 	char_data.moved = true
 	main_ui.action_menu.movement_button.disabled = true
 
+func place_target(target: Character, attack: Attack):
+	var target_button = TARGET_BUTTON.instantiate()
+	move_buttons.add_child(target_button)
+	target_button.position = target.position-Vector2(50,50)
+	target_button.assigned_target = target
+	target_button.attack = attack
+	target_button.target_chosen.connect(bangbang)
+
 func skibidi_clean():
 	for n in move_buttons.get_children().size():
 		move_buttons.get_children()[n].queue_free()
 	cleaned.emit()
+
+func bangbang(target: Character, attack: Attack):
+	target.take_damage(attack)
+	main_ui.action_menu.visible = false
+	skibidi_clean()
