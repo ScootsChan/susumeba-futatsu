@@ -7,6 +7,7 @@ const CHAR_TICKER = preload("res://scenes/char_ticker.tscn")
 @onready var main_ui: Control = $Camera2D/MainCanvas/main_ui
 @onready var move_buttons: Control = $CanvasLayer/MoveButtons
 @onready var main_canvas: CanvasLayer = $Camera2D/MainCanvas
+@onready var timer: Timer = $Timer
 
 const GO_FORTH = preload("res://scenes/go_forth_box.tscn")
 const PREPARE_THYSELF = preload("res://scenes/prepare_thyself.tscn")
@@ -20,6 +21,8 @@ signal cleaned
 var selected_char: Character
 var player: TeamData
 var enemy: TeamData
+var global_initative_counter = 0
+signal new_enemy_turn
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -32,16 +35,28 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if Main.turn == "player":
 		if check_acted(player) == true:
+			if welfare_check(enemy) == false:
+				Main.turn == "player victory"
 			enemy_turn(enemy)
-	else:
+	elif Main.turn == "enemy":
 		if check_acted(enemy) == true:
+			if welfare_check(player) == false:
+				Main.turn == "enemy victory"
 			player_turn(player)
 			
 func check_acted(checkee: TeamData) -> bool:
 	for n in checkee.lineup.size():
+		if checkee.lineup[n].health <= 0:
+			checkee.lineup[n].acted = true
 		if checkee.lineup[n].acted == false:
 			return false
 	return true
+
+func welfare_check(checkee: TeamData) -> bool:
+	for n in checkee.lineup.size():
+		if checkee.lineup[n].health > 0:
+			return true
+	return false
 
 func player_turn(player_data: TeamData):
 	Main.turn = "player"
@@ -56,6 +71,18 @@ func enemy_turn(enemy_data: TeamData):
 	Main.turn = "enemy"
 	var tatakae = PREPARE_THYSELF.instantiate()
 	move_buttons.add_child(tatakae)
+	timer.start()
+	await timer.timeout
+	
+	for n in enemy_data.lineup.size():
+		enemy_data.lineup[n].acted = false
+		enemy_data.lineup[n].moved = false
+	
+	for n in global_initative_counter:
+		new_enemy_turn.emit(n)
+		for x in get_children().size():
+			if get_children()[x] is Character and get_children()[x].char_data.initiative == n and get_children()[x].char_data.health > 0:
+				get_children()[x].enemy_turn()
 
 func load_map_data(data:MapData, player_data: TeamData, enemy_data: TeamData):
 	var player_starting_cell: Vector2i
@@ -78,7 +105,10 @@ func load_map_data(data:MapData, player_data: TeamData, enemy_data: TeamData):
 				var new_char =  CHARACTER.instantiate()
 				self.add_child(new_char)
 				new_char.position = map_to_local(data.tile_data[n].location+(Main.postures[enemy_data.posture])[z])
+				enemy_data.lineup[z].initiative = global_initative_counter
+				global_initative_counter += 1
 				new_char.load_data(enemy_data.lineup[z])
+				new_char.get_moving.connect(enemy_movement)
 				new_char.load_char()
 	for x in data.map_size:
 		for y in data.map_size:
@@ -118,6 +148,25 @@ func character_movement(char: Character): ################# This entire movement
 		print("CHAR SPEED CURRENTLY: "+str(char_speed))
 	char_data.moved = true
 	main_ui.action_menu.movement_button.disabled = true
+
+func enemy_movement(char: Character, target: Vector2):
+	var char_speed = char.char_data.speed
+	var char_data = char.char_data
+	while char_speed > 0:
+		var cells = get_surrounding_cells(local_to_map(char.position))
+		char_data.moved = false
+		var closest_cell = cells[0]
+		var cc_converted = map_to_local(cells[0])
+		for n in cells.size():
+			var this_cell = map_to_local(cells[n])
+			if this_cell.distance_to(target) < cc_converted.distance_to(target):
+				closest_cell = cells[n]
+				cc_converted = map_to_local(closest_cell)
+		char.position = cc_converted
+		timer.start()
+		await timer.timeout
+		char_speed -= 1
+	char_data.moved = true
 
 func place_target(target: Character, attack: Attack, attacker: CharacterData):
 	var target_button = TARGET_BUTTON.instantiate()

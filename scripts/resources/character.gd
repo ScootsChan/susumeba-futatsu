@@ -22,6 +22,8 @@ signal actionable_select
 signal moved
 signal target_found
 
+signal get_moving
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
@@ -79,21 +81,33 @@ func auto_turn():
 	if char_data.acted == false:
 		auto_attack()
 
+func enemy_turn():
+	match char_data.enemy_type: ####### Determining movement for the enemy
+		"grunt":
+			var target: Character
+			for x in char_data.attacks.size():
+				target = await enemy_find_targets(char_data.attacks[x])
+			get_moving.emit(self, target.position)
+	await char_data.moved == true
+	auto_attack()
+	char_data.acted = true
+
 func auto_attack():
 	for n in char_data.attacks.size():
-		cast.shape.radius = char_data.attacks[n].range*Main.HEX_DISTANCE
+		cast.shape.radius = (char_data.attacks[n].range+1)*Main.HEX_DISTANCE*1.25
 		if cast.is_colliding():
 			for x in cast.collision_result.size():
-				if cast.collision_result[x]["collider"].get_parent().char_data.allegiance != char_data.allegiance and cast.collision_result[x]["collider"].char_data.health > 0:
+				var collider = cast.collision_result[x]["collider"].get_parent()
+				if collider.char_data.allegiance != char_data.allegiance and collider.char_data.health > 0:
 					for y in char_data.attacks.size():
-						if char_body.position.distance_to(cast.collision_result[x])>=char_data.attacks[y].range*Main.HEX_DISTANCE:
+						if char_body.position.distance_to(collider.position)>=char_data.attacks[y].range*Main.HEX_DISTANCE:
 							char_data.attacks[y].in_range = true
-					dmg_calc(cast.collision_result[x].char_data)
-					if cast.collision_result[x].char_data.health <= 0:
-						cast.collision_result[x].die()
+					dmg_calc(collider.char_data)
+					if collider.char_data.health <= 0:
+						collider.die()
 					break
-				elif cast.collision_result[x].char_data.allegiance == char_data.allegiance:
-					print(str(self)+" SPOTTED SAMEFOR!: "+cast.collision_result[x].to_string())
+				elif collider.char_data.allegiance == char_data.allegiance:
+					print(str(self)+" SPOTTED SAMEFOR!: "+str(collider))
 		else:
 			print("no targets found for "+str(self))
 
@@ -140,3 +154,14 @@ func find_targets(attack: Attack):
 					target_found.emit(collider, attack, char_data)
 				elif collider.char_data.allegiance == char_data.allegiance:
 					print(str(self)+" SPOTTED FRIENDLY: "+str(collider))
+
+func enemy_find_targets(attack: Attack):
+	var range = attack.range
+	cast.shape.radius = (range+1)*Main.HEX_DISTANCE*1.25
+	print(str(self)+" is looking for targets...")
+	await get_tree().process_frame
+	if cast.is_colliding():
+		for x in cast.collision_result.size():
+			var collider = cast.collision_result[x]["collider"].get_parent()
+			if collider is Character and collider.char_data.allegiance != self.char_data.allegiance and collider.char_data.health > 0:
+				return collider

@@ -11,6 +11,8 @@ class_name CharacterData
 
 @export var speed: int
 @export var weakness: String
+@export var enemy_type: String
+@export var initiative: int
 
 @export_subgroup("Health")
 @export var health: int

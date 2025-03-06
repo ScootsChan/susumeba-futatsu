@@ -22,6 +22,7 @@ acted = false
 moved = false
 speed = 1
 weakness = "piercing"
+enemy_type = "grunt"
 health = 5
 max_health = 5
 attacks = Array[ExtResource("1_sry42")]([SubResource("Resource_8ws5t")])
