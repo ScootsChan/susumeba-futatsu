@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="CharacterData" load_steps=5 format=3 uid="uid://b5aupgtqi11l"]
 
-[ext_resource type="Script" uid="uid://1up4qd7jnldc" path="res://scripts/resources/attack.gd" id="1_46oio"]
-[ext_resource type="Script" uid="uid://oxpk3ir8hm3h" path="res://scripts/resources/character_data.gd" id="2_l7hv7"]
+[ext_resource type="Script" path="res://scripts/resources/attack.gd" id="1_46oio"]
+[ext_resource type="Script" path="res://scripts/resources/character_data.gd" id="2_l7hv7"]
 [ext_resource type="Texture2D" uid="uid://b5d2l4qh56jf0" path="res://icon.svg" id="3_l7hv7"]
 
 [sub_resource type="Resource" id="Resource_edl7y"]
@@ -23,6 +23,8 @@ acted = false
 moved = false
 speed = 1
 weakness = "explosive"
+enemy_type = ""
+initiative = 0
 health = 4
 max_health = 4
 attacks = Array[ExtResource("1_46oio")]([SubResource("Resource_edl7y")])

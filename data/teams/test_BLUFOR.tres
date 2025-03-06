@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="TeamData" load_steps=5 format=3 uid="uid://caf84ur1xfp5v"]
 
-[ext_resource type="Script" uid="uid://oxpk3ir8hm3h" path="res://scripts/resources/character_data.gd" id="1_6e8r3"]
-[ext_resource type="Script" uid="uid://ckj6yl4jn6h5h" path="res://scripts/resources/team.gd" id="1_x3wt3"]
+[ext_resource type="Script" path="res://scripts/resources/character_data.gd" id="1_6e8r3"]
+[ext_resource type="Script" path="res://scripts/resources/team.gd" id="1_x3wt3"]
 [ext_resource type="Resource" uid="uid://bcqg3qokd1aht" path="res://data/characters/test_char.tres" id="2_i1gja"]
 [ext_resource type="Resource" uid="uid://b5aupgtqi11l" path="res://data/characters/support_test.tres" id="3_b7mrj"]
 
