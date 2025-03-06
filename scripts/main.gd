@@ -1,6 +1,7 @@
 #### global main singleton
 extends Node
 const TEST_CHAR = preload("res://data/characters/test_char.tres")
+const COMBAT_TILES = preload("res://scenes/combat_tiles.tscn")
 const HEX_DISTANCE = 100
 
 var characters = {
@@ -32,6 +33,9 @@ var postures = {
 }
 
 var turn: String
+var player_data: TeamData
+var enemy_data: TeamData
+var map_data: MapData
 
 func turn_end(team: TeamData):
 	for n in team.lineup.size():

@@ -26,11 +26,13 @@ signal new_enemy_turn
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	load_map_data(TEST_MAP, TEST_BLUFOR, TEST_OPFOR)
-	player = TEST_BLUFOR
-	enemy = TEST_OPFOR
+	if Main.player_data == null:
+		load_map_data(TEST_MAP, TEST_BLUFOR, TEST_OPFOR)
+	else:
+		load_map_data(Main.map_data, Main.player_data, Main.enemy_data)
 	player_turn(player)
 	#pass
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Main.turn == "player":
@@ -87,6 +89,8 @@ func enemy_turn(enemy_data: TeamData):
 func load_map_data(data:MapData, player_data: TeamData, enemy_data: TeamData):
 	var player_starting_cell: Vector2i
 	var enemy_starting_cell: Vector2i
+	player = player_data
+	enemy = enemy_data
 	
 	for n in data.tile_data.size():
 		set_cell(data.tile_data[n].location, 0, Main.terrains[data.tile_data[n].terrain_type])
