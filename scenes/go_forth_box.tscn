@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://i8ognvrpx8ck"]
+[gd_scene load_steps=9 format=3 uid="uid://i8ognvrpx8ck"]
 
 [ext_resource type="Script" uid="uid://cab3wi5kq1cbp" path="res://scripts/go_forth_box.gd" id="1_xiioa"]
+[ext_resource type="FontVariation" uid="uid://du70sncemcg62" path="res://visuals/fonts/noto-sans-default-weight.tres" id="1_xk5oe"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_66met"]
 content_margin_left = 12.0
@@ -32,6 +33,7 @@ corner_radius_bottom_left = 4
 
 [sub_resource type="Theme" id="Theme_xqfa8"]
 HBoxContainer/constants/separation = 16
+Label/fonts/font = ExtResource("1_xk5oe")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_66met")
 SidePanel/base_type = &"PanelContainer"
 SidePanel/styles/panel = SubResource("StyleBoxFlat_pcwtp")
@@ -106,7 +108,7 @@ anchor_bottom = 0.5
 offset_left = -259.0
 offset_top = -127.0
 offset_right = 259.0
-offset_bottom = 127.0
+offset_bottom = 141.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_xqfa8")
