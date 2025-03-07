@@ -8,8 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://w4va6r8tekt5" path="res://visuals/sktz_graffiti.png" id="3_8ln24"]
 [ext_resource type="Texture2D" uid="uid://487rkq7d5uel" path="res://visuals/code_for_a_cause.png" id="5_oa1go"]
 [ext_resource type="Texture2D" uid="uid://dyf1lsy37572o" path="res://visuals/keep_moving_forward.png" id="6_tbmy8"]
-[ext_resource type="Texture2D" uid="uid://dk2211w0ll00b" path="res://susumeba_futatsu.png" id="7_oa1go"]
 [ext_resource type="FontFile" uid="uid://qiu03x6amvbw" path="res://visuals/fonts/CoveredByYourGrace-Regular.ttf" id="8_tbmy8"]
+[ext_resource type="Texture2D" uid="uid://bgd2ap6eejgk6" path="res://susumeba_futatsu_alt_cover.png" id="9_5dd4i"]
 
 [sub_resource type="FontVariation" id="FontVariation_jk1qb"]
 base_font = ExtResource("1_bqqt6")
@@ -527,11 +527,12 @@ alignment = 1
 
 [node name="SUSUMEBAFUTATSU" type="TextureRect" parent="Logo"]
 layout_mode = 2
-texture = ExtResource("7_oa1go")
+texture = ExtResource("9_5dd4i")
 expand_mode = 5
 stretch_mode = 5
 
 [node name="ENGLISH" type="Label" parent="Logo"]
+visible = false
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_tbmy8")
 theme_override_font_sizes/font_size = 72

@@ -87,7 +87,10 @@ func enemy_turn():
 			var target: Character
 			for x in char_data.attacks.size():
 				target = await enemy_find_targets(char_data.attacks[x])
-			get_moving.emit(self, target.position)
+			if target != null:
+				get_moving.emit(self, target.position)
+			else:
+				get_moving.emit(self, self.position+Vector2(0,100))
 	await char_data.moved == true
 	auto_attack()
 	char_data.acted = true
@@ -98,22 +101,27 @@ func auto_attack():
 		if cast.is_colliding():
 			for x in cast.collision_result.size():
 				var collider = cast.collision_result[x]["collider"].get_parent()
-				if collider.char_data.allegiance != char_data.allegiance and collider.char_data.health > 0:
+				if collider.char_data.allegiance != char_data.allegiance && collider.char_data.health > 0:
 					for y in char_data.attacks.size():
 						if char_body.position.distance_to(collider.position)>=char_data.attacks[y].range*Main.HEX_DISTANCE:
 							char_data.attacks[y].in_range = true
+					print(char_data.char_name+" CHOSE TARGET: "+collider.char_data.char_name)
 					dmg_calc(collider.char_data)
 					if collider.char_data.health <= 0:
 						collider.die()
 					break
 				elif collider.char_data.allegiance == char_data.allegiance:
-					print(str(self)+" SPOTTED SAMEFOR!: "+str(collider))
+					print(char_data.char_name+" SPOTTED SAMEFOR!: "+char_data.char_name)
 		else:
 			print("no targets found for "+str(self))
 
 func die():
-	rotation = 80
-	
+	if char_data.death_sprite == null:
+		rotation = 80
+	else:
+		self.texture = char_data.death_sprite
+		
+	if selected: selected = false
 
 func _on_character_body_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event.is_action_released("click"):
@@ -132,7 +140,7 @@ func select():
 	if selected: selected = false
 	else: selected = true
 	
-	if Main.turn == "player" and char_data.acted == false:
+	if Main.turn == "player" and char_data.acted == false and char_data.health > 0:
 		actionable_select.emit(self)
 		print("ayo there's an actionable select done by "+str(self)+"!!")
 
@@ -143,13 +151,13 @@ func ordered_movement(target: Vector2i):
 func find_targets(attack: Attack):
 	var range = attack.range
 	cast.shape.radius = (range+1)*Main.HEX_DISTANCE*1.25
-	print(str(self)+" is looking for targets...")
-	await get_tree().process_frame
+	print(char_data.char_name+" is looking for targets...")
+	for n in 2: await get_tree().process_frame
 	if cast.is_colliding():
 		for x in cast.collision_result.size():
 			var collider = cast.collision_result[x]["collider"].get_parent()
 			if collider is Character:
-				print("available target for "+str(self)+": "+str(cast.collision_result[x]))
+				print("available target for "+char_data.char_name+": "+collider.char_data.char_name)
 				if collider.char_data.allegiance != self.char_data.allegiance and collider.char_data.health > 0:
 					target_found.emit(collider, attack, char_data)
 				elif collider.char_data.allegiance == char_data.allegiance:
@@ -158,8 +166,8 @@ func find_targets(attack: Attack):
 func enemy_find_targets(attack: Attack):
 	var range = attack.range
 	cast.shape.radius = (range+1)*Main.HEX_DISTANCE*1.25
-	print(str(self)+" is looking for targets...")
-	await get_tree().process_frame
+	print(char_data.char_name+" is looking for targets...")
+	for n in 2: await get_tree().process_frame
 	if cast.is_colliding():
 		for x in cast.collision_result.size():
 			var collider = cast.collision_result[x]["collider"].get_parent()

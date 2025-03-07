@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://culkw8r3m7uvx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p8hi0"]
+radius = 20.0
+
+[node name="tile_cast" type="ShapeCast2D"]
+shape = SubResource("CircleShape2D_p8hi0")
+target_position = Vector2(0, 0)
+collide_with_areas = true

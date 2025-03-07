@@ -1,0 +1,50 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=8 format=3 uid="uid://cd0d1atl7r0xw"]
+
+[ext_resource type="Script" uid="uid://1up4qd7jnldc" path="res://scripts/resources/attack.gd" id="1_vd3s5"]
+[ext_resource type="Script" uid="uid://oxpk3ir8hm3h" path="res://scripts/resources/character_data.gd" id="2_2ptal"]
+[ext_resource type="Texture2D" uid="uid://4byx4ct5nonk" path="res://visuals/character-sprites.png" id="2_o74s8"]
+
+[sub_resource type="Resource" id="Resource_i5tjn"]
+script = ExtResource("1_vd3s5")
+attack_name = "queens rifle"
+range = 3
+damage = 3
+damage_type = "piercing"
+in_range = false
+targets = 0
+metadata/_custom_type_script = "uid://1up4qd7jnldc"
+
+[sub_resource type="Resource" id="Resource_kfxnk"]
+script = ExtResource("1_vd3s5")
+attack_name = "anti-personnel frags"
+range = 1
+damage = 2
+damage_type = "explosive"
+in_range = false
+targets = 0
+metadata/_custom_type_script = "uid://1up4qd7jnldc"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bcr2x"]
+atlas = ExtResource("2_o74s8")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ob7cx"]
+atlas = ExtResource("2_o74s8")
+region = Rect2(128, 0, 128, 128)
+
+[resource]
+script = ExtResource("2_2ptal")
+char_name = "The Venusian"
+allegiance = "BLUFOR"
+sprite = SubResource("AtlasTexture_ob7cx")
+death_sprite = SubResource("AtlasTexture_bcr2x")
+acted = false
+moved = false
+speed = 3
+weakness = "piercing"
+enemy_type = ""
+initiative = 0
+health = 7
+max_health = 7
+attacks = Array[ExtResource("1_vd3s5")]([SubResource("Resource_i5tjn"), SubResource("Resource_kfxnk")])
+metadata/_custom_type_script = "uid://oxpk3ir8hm3h"

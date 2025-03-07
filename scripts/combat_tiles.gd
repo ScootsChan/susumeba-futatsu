@@ -16,6 +16,7 @@ const TEST_OPFOR = preload("res://data/teams/test_OPFOR.tres")
 const ACTION_MENU = preload("res://scenes/action_menu.tscn")
 const MOVE_BUTTON = preload("res://scenes/move_button.tscn")
 const TARGET_BUTTON = preload("res://scenes/target_button.tscn")
+const TILE_CAST = preload("res://scenes/tile_cast.tscn")
 
 signal cleaned
 var selected_char: Character
@@ -83,7 +84,7 @@ func enemy_turn(enemy_data: TeamData):
 	for n in global_initative_counter:
 		new_enemy_turn.emit(n)
 		for x in get_children().size():
-			if get_children()[x] is Character and get_children()[x].char_data.initiative == n and get_children()[x].char_data.health > 0:
+			if get_children()[x] is Character && get_children()[x].char_data.initiative == n && get_children()[x].char_data.health > 0 && get_children()[x].char_data.allegiance == "OPFOR":
 				get_children()[x].enemy_turn()
 
 func load_map_data(data:MapData, player_data: TeamData, enemy_data: TeamData):
@@ -142,11 +143,19 @@ func character_movement(char: Character): ################# This entire movement
 		char_data.moved = false
 		char.moved.connect(skibidi_clean)
 		for n in cells.size():
-			var move_here = MOVE_BUTTON.instantiate()
-			#print("shittin out my goddamn buttons at "+str(cells[n]))
-			move_buttons.add_child(move_here)
-			move_here.position = map_to_local(cells[n])-Vector2(0,20)
-			move_here.move_here.connect(selected_char.ordered_movement.bind(map_to_local(cells[n])))
+			var cast = TILE_CAST.instantiate()
+			add_child(cast)
+			cast.position = map_to_local(cells[n])
+			for x in 2: await get_tree().process_frame
+			if cast.is_colliding() == false:
+				var move_here = MOVE_BUTTON.instantiate()
+				#print("shittin out my goddamn buttons at "+str(cells[n]))
+				move_buttons.add_child(move_here)
+				move_here.position = map_to_local(cells[n])-Vector2(0,20)
+				move_here.move_here.connect(selected_char.ordered_movement.bind(map_to_local(cells[n])))
+			elif cast.is_colliding():
+				print(cast.get_collider(0).get_parent().char_data.char_name+" IS FUCKING COLLIDING WITH ME!")
+			cast.queue_free()
 		await cleaned
 		char_speed -= 1
 		print("CHAR SPEED CURRENTLY: "+str(char_speed))
@@ -161,9 +170,15 @@ func enemy_movement(char: Character, target: Vector2):
 		char_data.moved = false
 		var closest_cell = cells[0]
 		var cc_converted = map_to_local(cells[0])
+		
 		for n in cells.size():
 			var this_cell = map_to_local(cells[n])
-			if this_cell.distance_to(target) < cc_converted.distance_to(target):
+			var cast = TILE_CAST.instantiate()
+			add_child(cast)
+			cast.position = map_to_local(cells[n])
+			for x in 2: await get_tree().process_frame
+			
+			if this_cell.distance_to(target) < cc_converted.distance_to(target) and cast.is_colliding() == false:
 				closest_cell = cells[n]
 				cc_converted = map_to_local(closest_cell)
 		char.position = cc_converted

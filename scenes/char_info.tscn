@@ -33,7 +33,7 @@ region = Rect2(256, 0, 128, 128)
 [node name="char_info" type="Window"]
 title = "Char Name Here"
 position = Vector2i(0, 36)
-size = Vector2i(600, 400)
+size = Vector2i(600, 300)
 script = ExtResource("1_4siq4")
 
 [node name="CharContainer" type="MarginContainer" parent="."]
@@ -49,6 +49,7 @@ layout_mode = 2
 size_flags_vertical = 0
 
 [node name="DeclarePanel" type="PanelContainer" parent="CharContainer/MainVBox"]
+visible = false
 layout_mode = 2
 
 [node name="DeclareButton" type="Button" parent="CharContainer/MainVBox/DeclarePanel"]
