@@ -34,6 +34,7 @@ var postures = {
 
 var turn: String
 var player_data: TeamData
+var run_data: RunData
 var enemy_data: TeamData
 var map_data: MapData
 

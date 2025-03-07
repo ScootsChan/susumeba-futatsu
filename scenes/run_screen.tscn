@@ -1,0 +1,174 @@
+[gd_scene load_steps=10 format=3 uid="uid://vrkfhsk411lb"]
+
+[ext_resource type="FontVariation" uid="uid://du70sncemcg62" path="res://visuals/fonts/noto-sans-default-weight.tres" id="1_y7pii"]
+[ext_resource type="Script" uid="uid://7ikc0dqptuco" path="res://scripts/run_screen.gd" id="2_0uv71"]
+[ext_resource type="Texture2D" uid="uid://4byx4ct5nonk" path="res://visuals/character-sprites.png" id="2_jbaf8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0uv71"]
+content_margin_left = 24.0
+content_margin_top = 8.0
+content_margin_right = 24.0
+content_margin_bottom = 12.0
+bg_color = Color(0.168627, 0.305882, 0.584314, 1)
+skew = Vector2(0.1, 0)
+border_width_left = 12
+border_width_top = 4
+border_width_right = 12
+border_width_bottom = 4
+border_color = Color(0.541176, 0.631373, 0.964706, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+expand_margin_left = 8.0
+
+[sub_resource type="Theme" id="Theme_i0x8s"]
+Label/fonts/font = ExtResource("1_y7pii")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_0uv71")
+Title/base_type = &"Label"
+Title/font_sizes/font_size = 32
+Title/fonts/font = ExtResource("1_y7pii")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5bst1"]
+atlas = ExtResource("2_jbaf8")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7pii"]
+atlas = ExtResource("2_jbaf8")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jbaf8"]
+atlas = ExtResource("2_jbaf8")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i0x8s"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+bg_color = Color(0.270588, 0.447059, 0.890196, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="run_screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_i0x8s")
+script = ExtResource("2_0uv71")
+
+[node name="BGColor" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.215686, 0.2, 0.203922, 1)
+
+[node name="TrackVBox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_right = 0.3
+anchor_bottom = 1.0
+grow_vertical = 2
+alignment = 1
+
+[node name="UnitVBox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.8
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="VenusianStatus" type="PanelContainer" parent="UnitVBox"]
+layout_mode = 2
+
+[node name="VenusianVBox" type="VBoxContainer" parent="UnitVBox/VenusianStatus"]
+layout_mode = 2
+
+[node name="VenusianTitle" type="Label" parent="UnitVBox/VenusianStatus/VenusianVBox"]
+layout_mode = 2
+theme_type_variation = &"Title"
+text = "\"The Venusian\" - you"
+
+[node name="VenusianHBox" type="HBoxContainer" parent="UnitVBox/VenusianStatus/VenusianVBox"]
+layout_mode = 2
+
+[node name="VenusianIcon" type="TextureRect" parent="UnitVBox/VenusianStatus/VenusianVBox/VenusianHBox"]
+texture_filter = 1
+layout_mode = 2
+texture = SubResource("AtlasTexture_5bst1")
+stretch_mode = 5
+
+[node name="VenusianText" type="Label" parent="UnitVBox/VenusianStatus/VenusianVBox/VenusianHBox"]
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "we in the shitter now baby"
+autowrap_mode = 3
+
+[node name="ResearchTeam" type="PanelContainer" parent="UnitVBox"]
+layout_mode = 2
+
+[node name="ResearchVBox" type="VBoxContainer" parent="UnitVBox/ResearchTeam"]
+layout_mode = 2
+
+[node name="ResearchTitle" type="Label" parent="UnitVBox/ResearchTeam/ResearchVBox"]
+layout_mode = 2
+theme_type_variation = &"Title"
+theme_override_font_sizes/font_size = 24
+text = "Lewis - Research Team Lead"
+
+[node name="ResearchHBox" type="HBoxContainer" parent="UnitVBox/ResearchTeam/ResearchVBox"]
+layout_mode = 2
+
+[node name="ResearchIcon" type="TextureRect" parent="UnitVBox/ResearchTeam/ResearchVBox/ResearchHBox"]
+texture_filter = 1
+layout_mode = 2
+texture = SubResource("AtlasTexture_y7pii")
+stretch_mode = 5
+
+[node name="ResearchText" type="Label" parent="UnitVBox/ResearchTeam/ResearchVBox/ResearchHBox"]
+custom_minimum_size = Vector2(128, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "aw man..."
+autowrap_mode = 3
+
+[node name="TeamStatus" type="PanelContainer" parent="UnitVBox"]
+layout_mode = 2
+
+[node name="StatusVBox" type="VBoxContainer" parent="UnitVBox/TeamStatus"]
+layout_mode = 2
+
+[node name="UnitHBox" type="HBoxContainer" parent="UnitVBox/TeamStatus/StatusVBox"]
+layout_mode = 2
+
+[node name="UnitIcon" type="TextureRect" parent="UnitVBox/TeamStatus/StatusVBox/UnitHBox"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_jbaf8")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="UnitName" type="Label" parent="UnitVBox/TeamStatus/StatusVBox/UnitHBox"]
+layout_mode = 2
+text = "Hello, Gundam janai desu"
+
+[node name="UnitHealthPanel" type="PanelContainer" parent="UnitVBox/TeamStatus/StatusVBox/UnitHBox"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_i0x8s")
+
+[node name="UnitHealth" type="Label" parent="UnitVBox/TeamStatus/StatusVBox/UnitHBox/UnitHealthPanel"]
+layout_mode = 2
+text = "10 / 10"
