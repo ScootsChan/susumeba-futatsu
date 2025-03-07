@@ -46,7 +46,10 @@ func _process(delta: float) -> void:
 			if welfare_check(player) == false:
 				Main.turn == "enemy victory"
 			player_turn(player)
-			
+
+#####################       Turn Data
+#####################
+
 func check_acted(checkee: TeamData) -> bool:
 	for n in checkee.lineup.size():
 		if checkee.lineup[n].health <= 0:
@@ -87,6 +90,10 @@ func enemy_turn(enemy_data: TeamData):
 			if get_children()[x] is Character && get_children()[x].char_data.initiative == n && get_children()[x].char_data.health > 0 && get_children()[x].char_data.allegiance == "OPFOR":
 				get_children()[x].enemy_turn()
 
+#######################################
+####################################### Loading Map Data
+#######################################
+
 func load_map_data(data:MapData, player_data: TeamData, enemy_data: TeamData):
 	var player_starting_cell: Vector2i
 	var enemy_starting_cell: Vector2i
@@ -125,6 +132,9 @@ func load_battle_data(player_data: TeamData, enemy_data: TeamData):
 	for n in player_data.lineup.size():
 		var char_ticker = CHAR_TICKER.instantiate()
 		main_ui.add_child(char_ticker)
+
+####################################### Character functions
+#######################################
 
 func begin_action(char: Character):
 	main_ui.action_menu.visible = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bx24hg0mkar1e"]
+[gd_scene load_steps=22 format=3 uid="uid://bx24hg0mkar1e"]
 
 [ext_resource type="FontFile" uid="uid://b2qdcgxb303h" path="res://visuals/fonts/NotoSansJP-VariableFont_wght.ttf" id="1_bqqt6"]
 [ext_resource type="Script" uid="uid://b0ymkxy7mfvsm" path="res://scripts/main_menu.gd" id="2_5dd4i"]
@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://pijoojjep3al" path="res://audio/yaho.ogg" id="2_rtw2f"]
 [ext_resource type="Texture2D" uid="uid://b5d2l4qh56jf0" path="res://icon.svg" id="2_wu84c"]
 [ext_resource type="Texture2D" uid="uid://w4va6r8tekt5" path="res://visuals/sktz_graffiti.png" id="3_8ln24"]
+[ext_resource type="AudioStream" uid="uid://fvaqhxtu6fbf" path="res://audio/titleread.ogg" id="4_lgwnu"]
 [ext_resource type="Texture2D" uid="uid://487rkq7d5uel" path="res://visuals/code_for_a_cause.png" id="5_oa1go"]
 [ext_resource type="Texture2D" uid="uid://dyf1lsy37572o" path="res://visuals/keep_moving_forward.png" id="6_tbmy8"]
 [ext_resource type="FontFile" uid="uid://qiu03x6amvbw" path="res://visuals/fonts/CoveredByYourGrace-Regular.ttf" id="8_tbmy8"]
@@ -233,8 +234,12 @@ tracks/2/keys = {
 "end_offset": 0.0,
 "start_offset": 0.0,
 "stream": ExtResource("2_rtw2f")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_lgwnu")
 }],
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0, 4.1)
 }
 tracks/2/use_blend = true
 tracks/3/type = "value"
