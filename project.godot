@@ -20,6 +20,7 @@ config/icon="res://susumeba_futatsu.png"
 [autoload]
 
 Main="*res://scripts/main.gd"
+Bgm="*res://scripts/bgm.gd"
 
 [display]
 

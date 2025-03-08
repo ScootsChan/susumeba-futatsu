@@ -99,7 +99,7 @@ func enemy_turn(enemy_data: TeamData):
 		new_enemy_turn.emit(n)
 		for x in get_children().size():
 			if get_children()[x] is Character && get_children()[x].char_data.initiative == n && get_children()[x].char_data.health > 0 && get_children()[x].char_data.allegiance == "OPFOR":
-				for y in 2: await get_tree().process_frame
+				for y in 10: await get_tree().process_frame
 				get_children()[x].enemy_turn()
 	
 	if welfare_check(player) == false:

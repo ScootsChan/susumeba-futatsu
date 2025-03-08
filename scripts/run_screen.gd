@@ -25,6 +25,7 @@ const BREAKOUT_OPFOR = preload("res://data/teams/opfor/breakout_opfor.tres")
 
 func _ready() -> void:
 	show_progress(Main.run_data)
+	Bgm.play_bgm(Main.run_data.progress)
 	#show_progress(TEST_RUN)
 
 func load_team_data(team: TeamData, run: RunData):

@@ -1,10 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://kd8mdi67fcjp"]
+[gd_scene load_steps=8 format=3 uid="uid://kd8mdi67fcjp"]
 
 [ext_resource type="Texture2D" uid="uid://cqdrv50bg1w2i" path="res://susumeba-futatsu-spritesheet.png" id="1_dfbfx"]
 [ext_resource type="Script" uid="uid://cgxb7p5pgvf8s" path="res://scripts/combat_tiles.gd" id="2_3mvoa"]
 [ext_resource type="Script" uid="uid://b7or8jsptkg7j" path="res://scripts/camera_2d.gd" id="3_gvqa4"]
 [ext_resource type="PackedScene" uid="uid://6evq1w52p54j" path="res://scenes/main_ui.tscn" id="3_twcmv"]
-[ext_resource type="AudioStream" uid="uid://cnveh0n6iweik" path="res://audio/music/cognitivedissonance.mp3" id="5_sfc3k"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gvqa4"]
 
@@ -57,8 +56,3 @@ offset_bottom = -360.0
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
-
-[node name="BGM" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_sfc3k")
-volume_db = -30.0
-autoplay = true

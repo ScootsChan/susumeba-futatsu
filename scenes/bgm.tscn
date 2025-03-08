@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://drr4bewvl7imr"]
+
+[ext_resource type="AudioStream" uid="uid://cnveh0n6iweik" path="res://audio/music/cognitivedissonance.mp3" id="1_3c3jb"]
+[ext_resource type="Script" uid="uid://drm55aro315nm" path="res://scripts/bgm.gd" id="1_q5y64"]
+
+[node name="BGM" type="AudioStreamPlayer"]
+stream = ExtResource("1_3c3jb")
+volume_db = -14.0
+parameters/looping = true
+script = ExtResource("1_q5y64")
