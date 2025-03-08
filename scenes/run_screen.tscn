@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://vrkfhsk411lb"]
+[gd_scene load_steps=12 format=3 uid="uid://vrkfhsk411lb"]
 
+[ext_resource type="FontFile" uid="uid://qiu03x6amvbw" path="res://visuals/fonts/CoveredByYourGrace-Regular.ttf" id="1_0uv71"]
 [ext_resource type="FontVariation" uid="uid://du70sncemcg62" path="res://visuals/fonts/noto-sans-default-weight.tres" id="1_y7pii"]
 [ext_resource type="Script" uid="uid://7ikc0dqptuco" path="res://scripts/run_screen.gd" id="2_0uv71"]
 [ext_resource type="Texture2D" uid="uid://4byx4ct5nonk" path="res://visuals/character-sprites.png" id="2_jbaf8"]
@@ -23,11 +24,23 @@ corner_radius_bottom_left = 12
 expand_margin_left = 8.0
 
 [sub_resource type="Theme" id="Theme_i0x8s"]
+Button/font_sizes/font_size = 32
+Button/fonts/font = ExtResource("1_0uv71")
 Label/fonts/font = ExtResource("1_y7pii")
+Mission/base_type = &"Label"
+Mission/font_sizes/font_size = 38
+Mission/fonts/font = ExtResource("1_y7pii")
+MissionHBox/base_type = &"HBoxContainer"
+MissionHBox/constants/separation = 12
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_0uv71")
 Title/base_type = &"Label"
 Title/font_sizes/font_size = 32
 Title/fonts/font = ExtResource("1_y7pii")
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_jbaf8"]
+color = Color(0.815686, 0.0627451, 0.298039, 1)
+thickness = 12
+vertical = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5bst1"]
 atlas = ExtResource("2_jbaf8")
@@ -69,14 +82,81 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.215686, 0.2, 0.203922, 1)
 
-[node name="TrackVBox" type="VBoxContainer" parent="."]
+[node name="TrackLine" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.1
-anchor_right = 0.3
-anchor_bottom = 1.0
+anchor_top = 0.1
+anchor_right = 0.4
+anchor_bottom = 0.9
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxLine_jbaf8")
+
+[node name="TrackVBox" type="VBoxContainer" parent="TrackLine"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
 alignment = 1
+
+[node name="BreakOut" type="HBoxContainer" parent="TrackLine/TrackVBox"]
+layout_mode = 2
+theme_type_variation = &"MissionHBox"
+
+[node name="BreakOutLabel" type="Label" parent="TrackLine/TrackVBox/BreakOut"]
+layout_mode = 2
+theme_type_variation = &"Mission"
+text = "Break Out!"
+
+[node name="Susume" type="Button" parent="TrackLine/TrackVBox/BreakOut"]
+layout_mode = 2
+text = "Susume!"
+
+[node name="EnemyAhead" type="HBoxContainer" parent="TrackLine/TrackVBox"]
+visible = false
+layout_mode = 2
+theme_type_variation = &"MissionHBox"
+
+[node name="EnemyAheadLabel" type="Label" parent="TrackLine/TrackVBox/EnemyAhead"]
+layout_mode = 2
+theme_type_variation = &"Mission"
+text = "Enemy Ahead"
+
+[node name="Susume" type="Button" parent="TrackLine/TrackVBox/EnemyAhead"]
+layout_mode = 2
+text = "Susume!"
+
+[node name="FinalStretch" type="HBoxContainer" parent="TrackLine/TrackVBox"]
+visible = false
+layout_mode = 2
+theme_type_variation = &"MissionHBox"
+
+[node name="FinalStretchLabel" type="Label" parent="TrackLine/TrackVBox/FinalStretch"]
+layout_mode = 2
+theme_type_variation = &"Mission"
+text = "The Final Stretch"
+
+[node name="Susume" type="Button" parent="TrackLine/TrackVBox/FinalStretch"]
+layout_mode = 2
+text = "Susume!"
+
+[node name="YouGainTwo" type="HBoxContainer" parent="TrackLine/TrackVBox"]
+visible = false
+layout_mode = 2
+theme_type_variation = &"MissionHBox"
+
+[node name="YouGainTwoLabel" type="Label" parent="TrackLine/TrackVBox/YouGainTwo"]
+layout_mode = 2
+theme_type_variation = &"Mission"
+text = "You Gain Two"
+
+[node name="Susume" type="Button" parent="TrackLine/TrackVBox/YouGainTwo"]
+layout_mode = 2
+text = "Susume!"
 
 [node name="UnitVBox" type="VBoxContainer" parent="."]
 layout_mode = 1
