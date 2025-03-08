@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="MapData" load_steps=59 format=3 uid="uid://daewc2xqmedf8"]
+[gd_resource type="Resource" script_class="MapData" load_steps=62 format=3 uid="uid://daewc2xqmedf8"]
 
 [ext_resource type="Script" uid="uid://bkuq3lbei1w45" path="res://scripts/resources/map_data.gd" id="1_odv77"]
 [ext_resource type="Script" uid="uid://c5tefnkxmdjkw" path="res://scripts/resources/hex.gd" id="2_m0oy7"]
@@ -395,9 +395,30 @@ terrain_type = "mountain"
 extra_data = ""
 metadata/_custom_type_script = "uid://c5tefnkxmdjkw"
 
+[sub_resource type="Resource" id="Resource_jrm1m"]
+script = ExtResource("2_m0oy7")
+location = Vector2i(8, 4)
+terrain_type = "plains"
+extra_data = ""
+metadata/_custom_type_script = "uid://c5tefnkxmdjkw"
+
+[sub_resource type="Resource" id="Resource_5yrwi"]
+script = ExtResource("2_m0oy7")
+location = Vector2i(8, 5)
+terrain_type = "plains"
+extra_data = ""
+metadata/_custom_type_script = "uid://c5tefnkxmdjkw"
+
+[sub_resource type="Resource" id="Resource_g1335"]
+script = ExtResource("2_m0oy7")
+location = Vector2i(8, 3)
+terrain_type = "plains"
+extra_data = ""
+metadata/_custom_type_script = "uid://c5tefnkxmdjkw"
+
 [resource]
 script = ExtResource("1_odv77")
 map_name = "Break Out"
-map_size = 8
-tile_data = Array[ExtResource("2_m0oy7")]([SubResource("Resource_odv77"), SubResource("Resource_m0oy7"), SubResource("Resource_nb5qr"), SubResource("Resource_q02bj"), SubResource("Resource_c3ydq"), SubResource("Resource_ya8u4"), SubResource("Resource_2xsi4"), SubResource("Resource_6fuoh"), SubResource("Resource_fwkab"), SubResource("Resource_3dtyg"), SubResource("Resource_c3ttg"), SubResource("Resource_ueoqk"), SubResource("Resource_pc13v"), SubResource("Resource_ne0pk"), SubResource("Resource_tgqgq"), SubResource("Resource_pk4pf"), SubResource("Resource_octua"), SubResource("Resource_dgoeh"), SubResource("Resource_6ax58"), SubResource("Resource_vdfnu"), SubResource("Resource_0t2xg"), SubResource("Resource_38l1a"), SubResource("Resource_m22d7"), SubResource("Resource_u5er3"), SubResource("Resource_v4fy3"), SubResource("Resource_4quat"), SubResource("Resource_s7os2"), SubResource("Resource_7ipac"), SubResource("Resource_o45fn"), SubResource("Resource_e4p25"), SubResource("Resource_18t62"), SubResource("Resource_g0821"), SubResource("Resource_soap2"), SubResource("Resource_j7w6t"), SubResource("Resource_c1d8n"), SubResource("Resource_jwgi3"), SubResource("Resource_a3pv3"), SubResource("Resource_08tkh"), SubResource("Resource_md1rw"), SubResource("Resource_dawis"), SubResource("Resource_k8gxh"), SubResource("Resource_2kjv8"), SubResource("Resource_uut7w"), SubResource("Resource_3kell"), SubResource("Resource_a0tbr"), SubResource("Resource_8kgno"), SubResource("Resource_srua4"), SubResource("Resource_ya3qf"), SubResource("Resource_6fqiy"), SubResource("Resource_40ysn"), SubResource("Resource_yfc1b"), SubResource("Resource_1iiqc"), SubResource("Resource_nesr0"), SubResource("Resource_te156"), SubResource("Resource_v767p"), SubResource("Resource_7afxp")])
+map_size = 9
+tile_data = Array[ExtResource("2_m0oy7")]([SubResource("Resource_odv77"), SubResource("Resource_m0oy7"), SubResource("Resource_nb5qr"), SubResource("Resource_q02bj"), SubResource("Resource_c3ydq"), SubResource("Resource_ya8u4"), SubResource("Resource_2xsi4"), SubResource("Resource_6fuoh"), SubResource("Resource_fwkab"), SubResource("Resource_3dtyg"), SubResource("Resource_c3ttg"), SubResource("Resource_ueoqk"), SubResource("Resource_pc13v"), SubResource("Resource_ne0pk"), SubResource("Resource_tgqgq"), SubResource("Resource_pk4pf"), SubResource("Resource_octua"), SubResource("Resource_dgoeh"), SubResource("Resource_6ax58"), SubResource("Resource_vdfnu"), SubResource("Resource_0t2xg"), SubResource("Resource_38l1a"), SubResource("Resource_m22d7"), SubResource("Resource_u5er3"), SubResource("Resource_v4fy3"), SubResource("Resource_4quat"), SubResource("Resource_s7os2"), SubResource("Resource_7ipac"), SubResource("Resource_o45fn"), SubResource("Resource_e4p25"), SubResource("Resource_18t62"), SubResource("Resource_g0821"), SubResource("Resource_soap2"), SubResource("Resource_j7w6t"), SubResource("Resource_c1d8n"), SubResource("Resource_jwgi3"), SubResource("Resource_a3pv3"), SubResource("Resource_08tkh"), SubResource("Resource_md1rw"), SubResource("Resource_dawis"), SubResource("Resource_k8gxh"), SubResource("Resource_2kjv8"), SubResource("Resource_uut7w"), SubResource("Resource_3kell"), SubResource("Resource_a0tbr"), SubResource("Resource_8kgno"), SubResource("Resource_srua4"), SubResource("Resource_ya3qf"), SubResource("Resource_6fqiy"), SubResource("Resource_40ysn"), SubResource("Resource_yfc1b"), SubResource("Resource_1iiqc"), SubResource("Resource_nesr0"), SubResource("Resource_te156"), SubResource("Resource_v767p"), SubResource("Resource_7afxp"), SubResource("Resource_jrm1m"), SubResource("Resource_5yrwi"), SubResource("Resource_g1335")])
 metadata/_custom_type_script = "uid://bkuq3lbei1w45"

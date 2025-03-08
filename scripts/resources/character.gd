@@ -4,6 +4,7 @@ class_name Character
 
 const TEST_CHAR = preload("res://data/characters/test_char.tres")
 const MOVE_BUTTON = preload("res://scenes/move_button.tscn")
+const ExplosionSprite = preload("res://scripts/explosion_sprite.gd")
 
 @onready var name_label: Label = $CharControl/CharVBox/NameLabel
 @onready var allegiance_label: Label = $CharControl/CharVBox/AllegianceLabel
@@ -14,6 +15,9 @@ const MOVE_BUTTON = preload("res://scenes/move_button.tscn")
 @onready var select_texture: Sprite2D = $SelectionTexture
 @onready var cast: ShapeCast2D = $CharacterBody/Cast
 @onready var char_body: Area2D = $CharacterBody
+
+@onready var sfx: AudioStreamPlayer = $SFX
+
 
 var hovered = false
 var selected = false
@@ -121,6 +125,10 @@ func die():
 		rotation = 80
 	else:
 		self.texture = char_data.death_sprite
+	var explosion = ExplosionSprite.new()
+	add_child(explosion)
+	explosion.play()
+	sfx.play()
 		
 	if selected: selected = false
 

@@ -389,7 +389,7 @@ libraries = {
 
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_jk1qb")
-volume_db = -10.0
+volume_db = -30.0
 parameters/looping = true
 
 [node name="SplashTimer" type="Timer" parent="."]
@@ -582,7 +582,9 @@ theme_override_font_sizes/font_size = 20
 text = "Music by Kevin MacLeod from incompetech.com
 Menu: \"Club Diver\"
 Stage 1-3: \"Cognitive Dissonance\"
-Stage 4: \"In a Heartbeat\""
+Stage 4: \"In a Heartbeat\"
+
+Explosion 2.wav by theplax -- https://freesound.org/s/560577/ -- License: Attribution 4.0"
 
 [node name="CloseCredits" type="Button" parent="Credits/CreditsVBox"]
 layout_mode = 2

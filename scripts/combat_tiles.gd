@@ -41,13 +41,18 @@ func _process(delta: float) -> void:
 			if welfare_check(enemy) == false:
 				Main.turn == "player victory"
 				main_ui.show_victory()
-			enemy_turn(enemy)
-	elif Main.turn == "enemy":
-		if check_acted(enemy) == true:
-			if welfare_check(player) == false:
-				Main.turn == "enemy victory"
-				main_ui.show_game_over()
-			player_turn(player)
+			else:
+				for x in 2: await get_tree().process_frame
+				enemy_turn(enemy)
+#	elif Main.turn == "enemy":
+#		for x in 10: await get_tree().process_frame
+#		if check_acted(enemy) == true:
+#			if welfare_check(player) == false:
+#				Main.turn == "enemy victory"
+#				main_ui.show_game_over()
+#			else:
+#				for x in 2: await get_tree().process_frame
+#				player_turn(player)
 
 #####################       Turn Data
 #####################
@@ -64,6 +69,10 @@ func welfare_check(checkee: TeamData) -> bool:
 	for n in checkee.lineup.size():
 		if checkee.lineup[n].health > 0:
 			return true
+		elif checkee.lineup[n].char_name == "The Venusian":
+			Main.turn == "enemy victory"
+			main_ui.show_game_over()
+			return false
 	return false
 
 func player_turn(player_data: TeamData):
@@ -92,6 +101,13 @@ func enemy_turn(enemy_data: TeamData):
 			if get_children()[x] is Character && get_children()[x].char_data.initiative == n && get_children()[x].char_data.health > 0 && get_children()[x].char_data.allegiance == "OPFOR":
 				for y in 2: await get_tree().process_frame
 				get_children()[x].enemy_turn()
+	
+	if welfare_check(player) == false:
+		Main.turn == "enemy victory"
+		main_ui.show_game_over()
+	else:
+		for x in 2: await get_tree().process_frame
+		player_turn(player)
 
 #######################################
 ####################################### Loading Map Data

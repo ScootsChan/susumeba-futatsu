@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://vrkfhsk411lb"]
+[gd_scene load_steps=12 format=3 uid="uid://vrkfhsk411lb"]
 
 [ext_resource type="FontFile" uid="uid://qiu03x6amvbw" path="res://visuals/fonts/CoveredByYourGrace-Regular.ttf" id="1_0uv71"]
 [ext_resource type="FontVariation" uid="uid://du70sncemcg62" path="res://visuals/fonts/noto-sans-default-weight.tres" id="1_y7pii"]
 [ext_resource type="Script" uid="uid://7ikc0dqptuco" path="res://scripts/run_screen.gd" id="2_0uv71"]
 [ext_resource type="Texture2D" uid="uid://4byx4ct5nonk" path="res://visuals/character-sprites.png" id="2_jbaf8"]
+[ext_resource type="FontFile" uid="uid://b2qdcgxb303h" path="res://visuals/fonts/NotoSansJP-VariableFont_wght.ttf" id="5_i0x8s"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0uv71"]
 content_margin_left = 24.0
@@ -49,6 +50,9 @@ region = Rect2(0, 0, 128, 128)
 [sub_resource type="AtlasTexture" id="AtlasTexture_y7pii"]
 atlas = ExtResource("2_jbaf8")
 region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5bst1"]
+bg_color = Color(0, 0, 0, 0.352941)
 
 [node name="run_screen" type="Control"]
 layout_mode = 3
@@ -221,4 +225,38 @@ size_flags_horizontal = 4
 layout_mode = 2
 size_flags_horizontal = 0
 
+[node name="Pause" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_5bst1")
+
+[node name="PauseVBox" type="VBoxContainer" parent="Pause"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="PauseLabel" type="Label" parent="Pause/PauseVBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_i0x8s")
+theme_override_font_sizes/font_size = 96
+text = "PAUSED"
+
+[node name="MainMenu" type="Button" parent="Pause/PauseVBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_y7pii")
+text = "Return to Main Menu"
+
+[node name="Quit" type="Button" parent="Pause/PauseVBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_y7pii")
+text = "Quit Game"
+
 [connection signal="button_up" from="TrackLine/TrackVBox/BreakOut/Susume" to="." method="_on_breakout_susume_button_up"]
+[connection signal="button_up" from="Pause/PauseVBox/MainMenu" to="." method="_on_main_menu_button_up"]
+[connection signal="button_up" from="Pause/PauseVBox/Quit" to="." method="_on_quit_button_up"]

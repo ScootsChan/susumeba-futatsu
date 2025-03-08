@@ -20,6 +20,9 @@ const BREAKOUT_OPFOR = preload("res://data/teams/opfor/breakout_opfor.tres")
 @onready var final_stretch: HBoxContainer = $TrackLine/TrackVBox/FinalStretch
 @onready var you_gain_two: HBoxContainer = $TrackLine/TrackVBox/YouGainTwo
 
+@onready var pause: PanelContainer = $Pause
+
+
 func _ready() -> void:
 	show_progress(Main.run_data)
 	#show_progress(TEST_RUN)
@@ -71,3 +74,18 @@ func _on_breakout_susume_button_up() -> void:
 	Main.map_data = BREAKOUT
 	Main.enemy_data = BREAKOUT_OPFOR
 	get_tree().change_scene_to_file("res://scenes/combat_tiles.tscn")
+
+func _input(event) -> void:
+	if Input.is_action_pressed("escape"):
+		if pause.visible == true:
+			pause.visible = false
+		else:
+			pause.visible = true
+
+
+func _on_main_menu_button_up() -> void:
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+
+
+func _on_quit_button_up() -> void:
+	get_tree().quit()
