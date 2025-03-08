@@ -13,7 +13,8 @@ var characters = {
 var terrains = {
 	"plains": Vector2i(2,1),
 	"forest": Vector2i(3,1),
-	"mountain": Vector2i(4,1)
+	"mountain": Vector2i(4,1),
+	"elevator": Vector2i(5,1)
 }
 
 var damage_conversion = {

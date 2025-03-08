@@ -3,11 +3,12 @@ extends Control
 @onready var splash_timer: Timer = $SplashTimer
 @onready var bgm: AudioStreamPlayer = $BGM
 @onready var credits: PanelContainer = $Credits
+@onready var version_label: Label = $MenuButtons/VersionLabel
 
 
 func _ready() -> void:
 	anim_player.play("splash")
-
+	version_label.text = "Version: "+ProjectSettings.get_setting("application/config/version")
 
 func _on_splash_timer_timeout() -> void:
 	bgm.play()

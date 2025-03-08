@@ -1,0 +1,50 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=8 format=3 uid="uid://rg1yn2x5r1k6"]
+
+[ext_resource type="Script" uid="uid://1up4qd7jnldc" path="res://scripts/resources/attack.gd" id="1_v0xw0"]
+[ext_resource type="Texture2D" uid="uid://4byx4ct5nonk" path="res://visuals/character-sprites.png" id="2_ih2lx"]
+[ext_resource type="Script" uid="uid://oxpk3ir8hm3h" path="res://scripts/resources/character_data.gd" id="2_vpxby"]
+
+[sub_resource type="Resource" id="Resource_pw7vs"]
+script = ExtResource("1_v0xw0")
+attack_name = "rasp rifle"
+range = 3
+damage = 3
+damage_type = "piercing"
+in_range = false
+targets = 0
+metadata/_custom_type_script = "uid://1up4qd7jnldc"
+
+[sub_resource type="Resource" id="Resource_miaf5"]
+script = ExtResource("1_v0xw0")
+attack_name = "burn poppers"
+range = 2
+damage = 3
+damage_type = "explosive"
+in_range = false
+targets = 0
+metadata/_custom_type_script = "uid://1up4qd7jnldc"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2fcoc"]
+atlas = ExtResource("2_ih2lx")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lh0np"]
+atlas = ExtResource("2_ih2lx")
+region = Rect2(384, 128, 128, 128)
+
+[resource]
+script = ExtResource("2_vpxby")
+char_name = "B91 Pilot \"Romeo\""
+allegiance = "BLUFOR"
+sprite = SubResource("AtlasTexture_lh0np")
+death_sprite = SubResource("AtlasTexture_2fcoc")
+acted = false
+moved = false
+speed = 3
+weakness = "piercing"
+enemy_type = ""
+initiative = 0
+health = 7
+max_health = 7
+attacks = Array[ExtResource("1_v0xw0")]([SubResource("Resource_pw7vs"), SubResource("Resource_miaf5")])
+metadata/_custom_type_script = "uid://oxpk3ir8hm3h"

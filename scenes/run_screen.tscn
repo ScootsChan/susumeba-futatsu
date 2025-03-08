@@ -108,7 +108,6 @@ layout_mode = 2
 text = "Susume!"
 
 [node name="EnemyAhead" type="HBoxContainer" parent="TrackLine/TrackVBox"]
-visible = false
 layout_mode = 2
 theme_type_variation = &"MissionHBox"
 
@@ -122,7 +121,6 @@ layout_mode = 2
 text = "Susume!"
 
 [node name="FinalStretch" type="HBoxContainer" parent="TrackLine/TrackVBox"]
-visible = false
 layout_mode = 2
 theme_type_variation = &"MissionHBox"
 
@@ -136,7 +134,6 @@ layout_mode = 2
 text = "Susume!"
 
 [node name="YouGainTwo" type="HBoxContainer" parent="TrackLine/TrackVBox"]
-visible = false
 layout_mode = 2
 theme_type_variation = &"MissionHBox"
 
@@ -258,5 +255,8 @@ theme_override_fonts/font = ExtResource("1_y7pii")
 text = "Quit Game"
 
 [connection signal="button_up" from="TrackLine/TrackVBox/BreakOut/Susume" to="." method="_on_breakout_susume_button_up"]
+[connection signal="button_up" from="TrackLine/TrackVBox/EnemyAhead/Susume" to="." method="_on_enemyahead_susume_button_up"]
+[connection signal="button_up" from="TrackLine/TrackVBox/FinalStretch/Susume" to="." method="_on_finalstretch_susume_button_up"]
+[connection signal="button_up" from="TrackLine/TrackVBox/YouGainTwo/Susume" to="." method="_on_yougaintwo_susume_button_up"]
 [connection signal="button_up" from="Pause/PauseVBox/MainMenu" to="." method="_on_main_menu_button_up"]
 [connection signal="button_up" from="Pause/PauseVBox/Quit" to="." method="_on_quit_button_up"]

@@ -91,3 +91,5 @@ func _on_continue_button_up() -> void:
 	if Main.run_data.progress != 3:
 		Main.run_data.progress += 1
 		get_tree().change_scene_to_file("res://scenes/run_screen.tscn")
+	else:
+		get_tree().change_scene_to_file("res://scenes/finale.tscn")

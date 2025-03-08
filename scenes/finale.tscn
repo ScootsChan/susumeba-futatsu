@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwjs61keq25f"]
+
+[ext_resource type="FontVariation" uid="uid://du70sncemcg62" path="res://visuals/fonts/noto-sans-default-weight.tres" id="1_fi6aj"]
+[ext_resource type="Script" uid="uid://bmp4vklyub3w4" path="res://scenes/finale.gd" id="1_kaf1w"]
+
+[node name="finale" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kaf1w")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_fi6aj")
+text = "...The sound of the space elevator has never felt so good.
+You've made it. You're safe.
+The war will end soon, with this weapon.
+Congratulations.
+
+
+Thank you so much for playing till the end! -Danny
+
+"
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Return to Main Menu"
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Quit Game"
+
+[connection signal="button_up" from="VBoxContainer/Button" to="." method="_on_button_button_up"]
+[connection signal="button_up" from="VBoxContainer/Quit" to="." method="_on_quit_button_up"]

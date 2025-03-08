@@ -520,6 +520,13 @@ text = "Credits"
 layout_mode = 2
 text = "Quit"
 
+[node name="VersionLabel" type="Label" parent="MenuButtons"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("12_flqon")
+theme_override_font_sizes/font_size = 20
+text = "Version: "
+horizontal_alignment = 1
+
 [node name="Logo" type="VBoxContainer" parent="."]
 visible = false
 layout_mode = 1

@@ -1,0 +1,46 @@
+[gd_resource type="Resource" script_class="MapData" load_steps=8 format=3 uid="uid://r552mcfj30ra"]
+
+[ext_resource type="Script" uid="uid://bkuq3lbei1w45" path="res://scripts/resources/map_data.gd" id="1_wbmsv"]
+[ext_resource type="Script" uid="uid://c5tefnkxmdjkw" path="res://scripts/resources/hex.gd" id="2_o853b"]
+
+[sub_resource type="Resource" id="Resource_wbmsv"]
+script = ExtResource("2_o853b")
+location = Vector2i(4, 4)
+terrain_type = "plains"
+extra_data = "player start"
+metadata/_custom_type_script = "uid://c5tefnkxmdjkw"
+
+[sub_resource type="Resource" id="Resource_o853b"]
+script = ExtResource("2_o853b")
+location = Vector2i(0, 0)
+terrain_type = "plains"
+extra_data = "enemy start"
+metadata/_custom_type_script = "uid://c5tefnkxmdjkw"
+
+[sub_resource type="Resource" id="Resource_r8kp7"]
+script = ExtResource("2_o853b")
+location = Vector2i(1, 0)
+terrain_type = "plains"
+extra_data = ""
+metadata/_custom_type_script = "uid://c5tefnkxmdjkw"
+
+[sub_resource type="Resource" id="Resource_rn27o"]
+script = ExtResource("2_o853b")
+location = Vector2i(2, 1)
+terrain_type = "plains"
+extra_data = ""
+metadata/_custom_type_script = "uid://c5tefnkxmdjkw"
+
+[sub_resource type="Resource" id="Resource_i7v3h"]
+script = ExtResource("2_o853b")
+location = Vector2i(3, 2)
+terrain_type = "plains"
+extra_data = ""
+metadata/_custom_type_script = "uid://c5tefnkxmdjkw"
+
+[resource]
+script = ExtResource("1_wbmsv")
+map_name = "Enemy Ahead"
+map_size = 6
+tile_data = Array[ExtResource("2_o853b")]([SubResource("Resource_wbmsv"), SubResource("Resource_o853b"), SubResource("Resource_r8kp7"), SubResource("Resource_rn27o"), SubResource("Resource_i7v3h")])
+metadata/_custom_type_script = "uid://bkuq3lbei1w45"

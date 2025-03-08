@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="MapData" load_steps=5 format=3 uid="uid://cbj8b1scydg4x"]
+
+[ext_resource type="Script" uid="uid://bkuq3lbei1w45" path="res://scripts/resources/map_data.gd" id="1_yo7on"]
+[ext_resource type="Script" uid="uid://c5tefnkxmdjkw" path="res://scripts/resources/hex.gd" id="2_vhq16"]
+
+[sub_resource type="Resource" id="Resource_yo7on"]
+script = ExtResource("2_vhq16")
+location = Vector2i(3, 6)
+terrain_type = "forest"
+extra_data = "player start"
+metadata/_custom_type_script = "uid://c5tefnkxmdjkw"
+
+[sub_resource type="Resource" id="Resource_vhq16"]
+script = ExtResource("2_vhq16")
+location = Vector2i(3, 0)
+terrain_type = "forest"
+extra_data = "enemy start"
+metadata/_custom_type_script = "uid://c5tefnkxmdjkw"
+
+[resource]
+script = ExtResource("1_yo7on")
+map_name = "Final Stretch"
+map_size = 7
+tile_data = Array[ExtResource("2_vhq16")]([SubResource("Resource_yo7on"), SubResource("Resource_vhq16")])
+metadata/_custom_type_script = "uid://bkuq3lbei1w45"

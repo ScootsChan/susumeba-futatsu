@@ -1,0 +1,83 @@
+[gd_resource type="Resource" script_class="TeamData" load_steps=12 format=3 uid="uid://l06dwtvupi3c"]
+
+[ext_resource type="Script" uid="uid://oxpk3ir8hm3h" path="res://scripts/resources/character_data.gd" id="1_m11me"]
+[ext_resource type="Resource" uid="uid://cv7odem0hj8d2" path="res://data/characters/opfor/gold_messer.tres" id="2_rkqq5"]
+[ext_resource type="Script" uid="uid://ckj6yl4jn6h5h" path="res://scripts/resources/team.gd" id="2_soqvd"]
+[ext_resource type="Script" uid="uid://1up4qd7jnldc" path="res://scripts/resources/attack.gd" id="3_gj58e"]
+[ext_resource type="Texture2D" uid="uid://4byx4ct5nonk" path="res://visuals/character-sprites.png" id="4_f6p3a"]
+
+[sub_resource type="Resource" id="Resource_rpbwr"]
+script = ExtResource("3_gj58e")
+attack_name = "m1i gun"
+range = 2
+damage = 2
+damage_type = "piercing"
+in_range = false
+targets = 0
+metadata/_custom_type_script = "uid://1up4qd7jnldc"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0uaor"]
+atlas = ExtResource("4_f6p3a")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihl12"]
+atlas = ExtResource("4_f6p3a")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="Resource" id="Resource_7nooy"]
+script = ExtResource("1_m11me")
+char_name = "M1I \"Messer\""
+allegiance = "OPFOR"
+sprite = SubResource("AtlasTexture_ihl12")
+death_sprite = SubResource("AtlasTexture_0uaor")
+acted = false
+moved = false
+speed = 2
+weakness = "piercing"
+enemy_type = "grunt"
+initiative = 0
+health = 4
+max_health = 4
+attacks = Array[ExtResource("3_gj58e")]([SubResource("Resource_rpbwr")])
+metadata/_custom_type_script = "uid://oxpk3ir8hm3h"
+
+[sub_resource type="Resource" id="Resource_r0t0u"]
+script = ExtResource("1_m11me")
+char_name = "M1I \"Messer\""
+allegiance = "OPFOR"
+sprite = SubResource("AtlasTexture_ihl12")
+death_sprite = SubResource("AtlasTexture_0uaor")
+acted = false
+moved = false
+speed = 2
+weakness = "piercing"
+enemy_type = "grunt"
+initiative = 0
+health = 4
+max_health = 4
+attacks = Array[ExtResource("3_gj58e")]([SubResource("Resource_rpbwr")])
+metadata/_custom_type_script = "uid://oxpk3ir8hm3h"
+
+[sub_resource type="Resource" id="Resource_clx8x"]
+script = ExtResource("1_m11me")
+char_name = "M1I \"Messer\""
+allegiance = "OPFOR"
+sprite = SubResource("AtlasTexture_ihl12")
+death_sprite = SubResource("AtlasTexture_0uaor")
+acted = false
+moved = false
+speed = 2
+weakness = "piercing"
+enemy_type = "grunt"
+initiative = 0
+health = 4
+max_health = 4
+attacks = Array[ExtResource("3_gj58e")]([SubResource("Resource_rpbwr")])
+metadata/_custom_type_script = "uid://oxpk3ir8hm3h"
+
+[resource]
+script = ExtResource("2_soqvd")
+team_name = "OPFOR Marker Syndicate"
+lineup = Array[ExtResource("1_m11me")]([ExtResource("2_rkqq5"), SubResource("Resource_7nooy"), SubResource("Resource_r0t0u"), SubResource("Resource_clx8x")])
+posture = "escort"
+metadata/_custom_type_script = "uid://ckj6yl4jn6h5h"

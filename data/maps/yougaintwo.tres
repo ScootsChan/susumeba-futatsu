@@ -1,0 +1,53 @@
+[gd_resource type="Resource" script_class="MapData" load_steps=9 format=3 uid="uid://4qweg31g2wni"]
+
+[ext_resource type="Script" uid="uid://bkuq3lbei1w45" path="res://scripts/resources/map_data.gd" id="1_imwl3"]
+[ext_resource type="Script" uid="uid://c5tefnkxmdjkw" path="res://scripts/resources/hex.gd" id="2_sh5w8"]
+
+[sub_resource type="Resource" id="Resource_imwl3"]
+script = ExtResource("2_sh5w8")
+location = Vector2i(7, 7)
+terrain_type = "mountain"
+extra_data = "player start"
+metadata/_custom_type_script = "uid://c5tefnkxmdjkw"
+
+[sub_resource type="Resource" id="Resource_sh5w8"]
+script = ExtResource("2_sh5w8")
+location = Vector2i(2, 2)
+terrain_type = "mountain"
+extra_data = "enemy start"
+metadata/_custom_type_script = "uid://c5tefnkxmdjkw"
+
+[sub_resource type="Resource" id="Resource_8icx3"]
+script = ExtResource("2_sh5w8")
+location = Vector2i(3, 3)
+terrain_type = "elevator"
+extra_data = ""
+metadata/_custom_type_script = "uid://c5tefnkxmdjkw"
+
+[sub_resource type="Resource" id="Resource_sw3h7"]
+script = ExtResource("2_sh5w8")
+location = Vector2i(2, 3)
+terrain_type = "mountain"
+extra_data = ""
+metadata/_custom_type_script = "uid://c5tefnkxmdjkw"
+
+[sub_resource type="Resource" id="Resource_6vop6"]
+script = ExtResource("2_sh5w8")
+location = Vector2i(3, 4)
+terrain_type = "mountain"
+extra_data = ""
+metadata/_custom_type_script = "uid://c5tefnkxmdjkw"
+
+[sub_resource type="Resource" id="Resource_s5hw2"]
+script = ExtResource("2_sh5w8")
+location = Vector2i(2, 3)
+terrain_type = "mountain"
+extra_data = ""
+metadata/_custom_type_script = "uid://c5tefnkxmdjkw"
+
+[resource]
+script = ExtResource("1_imwl3")
+map_name = "You Gain Two"
+map_size = 9
+tile_data = Array[ExtResource("2_sh5w8")]([SubResource("Resource_imwl3"), SubResource("Resource_sh5w8"), SubResource("Resource_8icx3"), SubResource("Resource_sw3h7"), SubResource("Resource_6vop6"), SubResource("Resource_s5hw2")])
+metadata/_custom_type_script = "uid://bkuq3lbei1w45"
