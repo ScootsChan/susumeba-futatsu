@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=7 format=3 uid="uid://ci8cbfdmk11ei"]
+
+[ext_resource type="Script" uid="uid://1up4qd7jnldc" path="res://scripts/resources/attack.gd" id="1_ub1y7"]
+[ext_resource type="Texture2D" uid="uid://4byx4ct5nonk" path="res://visuals/character-sprites.png" id="2_rmnt8"]
+[ext_resource type="Script" uid="uid://oxpk3ir8hm3h" path="res://scripts/resources/character_data.gd" id="2_rpbwr"]
+
+[sub_resource type="Resource" id="Resource_rpbwr"]
+script = ExtResource("1_ub1y7")
+attack_name = "t8k gun"
+range = 1
+damage = 1
+damage_type = "piercing"
+in_range = false
+targets = 0
+metadata/_custom_type_script = "uid://1up4qd7jnldc"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_igu0l"]
+atlas = ExtResource("2_rmnt8")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0n4lp"]
+atlas = ExtResource("2_rmnt8")
+region = Rect2(256, 0, 128, 128)
+
+[resource]
+script = ExtResource("2_rpbwr")
+char_name = "T8K \"Tyrant\""
+allegiance = "OPFOR"
+sprite = SubResource("AtlasTexture_0n4lp")
+death_sprite = SubResource("AtlasTexture_igu0l")
+acted = false
+moved = false
+speed = 1
+weakness = "piercing"
+enemy_type = "grunt"
+initiative = 0
+health = 3
+max_health = 3
+attacks = Array[ExtResource("1_ub1y7")]([SubResource("Resource_rpbwr")])
+metadata/_custom_type_script = "uid://oxpk3ir8hm3h"

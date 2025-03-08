@@ -40,11 +40,13 @@ func _process(delta: float) -> void:
 		if check_acted(player) == true:
 			if welfare_check(enemy) == false:
 				Main.turn == "player victory"
+				main_ui.show_victory()
 			enemy_turn(enemy)
 	elif Main.turn == "enemy":
 		if check_acted(enemy) == true:
 			if welfare_check(player) == false:
 				Main.turn == "enemy victory"
+				main_ui.show_game_over()
 			player_turn(player)
 
 #####################       Turn Data
@@ -88,6 +90,7 @@ func enemy_turn(enemy_data: TeamData):
 		new_enemy_turn.emit(n)
 		for x in get_children().size():
 			if get_children()[x] is Character && get_children()[x].char_data.initiative == n && get_children()[x].char_data.health > 0 && get_children()[x].char_data.allegiance == "OPFOR":
+				for y in 2: await get_tree().process_frame
 				get_children()[x].enemy_turn()
 
 #######################################

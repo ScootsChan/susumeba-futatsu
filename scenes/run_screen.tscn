@@ -220,3 +220,5 @@ size_flags_horizontal = 4
 [node name="StatusVBox" type="VBoxContainer" parent="UnitVBox/TeamStatus"]
 layout_mode = 2
 size_flags_horizontal = 0
+
+[connection signal="button_up" from="TrackLine/TrackVBox/BreakOut/Susume" to="." method="_on_breakout_susume_button_up"]

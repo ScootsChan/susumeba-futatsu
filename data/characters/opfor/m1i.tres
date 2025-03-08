@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=7 format=3 uid="uid://dc82yn3rr7xik"]
+
+[ext_resource type="Script" uid="uid://1up4qd7jnldc" path="res://scripts/resources/attack.gd" id="1_0uaor"]
+[ext_resource type="Texture2D" uid="uid://4byx4ct5nonk" path="res://visuals/character-sprites.png" id="2_ihl12"]
+[ext_resource type="Script" uid="uid://oxpk3ir8hm3h" path="res://scripts/resources/character_data.gd" id="3_lkhao"]
+
+[sub_resource type="Resource" id="Resource_rpbwr"]
+script = ExtResource("1_0uaor")
+attack_name = "m1i gun"
+range = 2
+damage = 2
+damage_type = "piercing"
+in_range = false
+targets = 0
+metadata/_custom_type_script = "uid://1up4qd7jnldc"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0uaor"]
+atlas = ExtResource("2_ihl12")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihl12"]
+atlas = ExtResource("2_ihl12")
+region = Rect2(384, 0, 128, 128)
+
+[resource]
+script = ExtResource("3_lkhao")
+char_name = "M1I \"Messer\""
+allegiance = "OPFOR"
+sprite = SubResource("AtlasTexture_ihl12")
+death_sprite = SubResource("AtlasTexture_0uaor")
+acted = false
+moved = false
+speed = 2
+weakness = "piercing"
+enemy_type = "grunt"
+initiative = 0
+health = 4
+max_health = 4
+attacks = Array[ExtResource("1_0uaor")]([SubResource("Resource_rpbwr")])
+metadata/_custom_type_script = "uid://oxpk3ir8hm3h"

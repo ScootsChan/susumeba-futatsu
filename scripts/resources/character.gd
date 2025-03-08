@@ -52,6 +52,7 @@ func _process(delta: float) -> void:
 func load_char():
 	if char_data == null:
 		char_data = TEST_CHAR
+	self.texture = char_data.sprite
 	name_label.text = char_data.char_name
 	allegiance_label.text = char_data.allegiance
 	hp_bar.value = char_data.health
@@ -165,7 +166,7 @@ func find_targets(attack: Attack):
 
 func enemy_find_targets(attack: Attack):
 	var range = attack.range
-	cast.shape.radius = (range+1)*Main.HEX_DISTANCE*1.25
+	cast.shape.radius = (range+1)*Main.HEX_DISTANCE*3
 	print(char_data.char_name+" is looking for targets...")
 	for n in 2: await get_tree().process_frame
 	if cast.is_colliding():

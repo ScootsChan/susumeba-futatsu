@@ -9,6 +9,6 @@
 [resource]
 script = ExtResource("2_dfih8")
 team_name = "Group Foxtrot"
-lineup = Array[ExtResource("1_ykxjr")]([ExtResource("2_o03vy"), ExtResource("3_4b3ob"), ExtResource("4_mud87")])
-posture = ""
+lineup = Array[ExtResource("1_ykxjr")]([ExtResource("2_o03vy"), ExtResource("4_mud87"), ExtResource("3_4b3ob")])
+posture = "echelon"
 metadata/_custom_type_script = "uid://ckj6yl4jn6h5h"

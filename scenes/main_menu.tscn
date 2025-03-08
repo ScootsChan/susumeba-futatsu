@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bx24hg0mkar1e"]
+[gd_scene load_steps=23 format=3 uid="uid://bx24hg0mkar1e"]
 
 [ext_resource type="FontFile" uid="uid://b2qdcgxb303h" path="res://visuals/fonts/NotoSansJP-VariableFont_wght.ttf" id="1_bqqt6"]
 [ext_resource type="Script" uid="uid://b0ymkxy7mfvsm" path="res://scripts/main_menu.gd" id="2_5dd4i"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dyf1lsy37572o" path="res://visuals/keep_moving_forward.png" id="6_tbmy8"]
 [ext_resource type="FontFile" uid="uid://qiu03x6amvbw" path="res://visuals/fonts/CoveredByYourGrace-Regular.ttf" id="8_tbmy8"]
 [ext_resource type="Texture2D" uid="uid://bgd2ap6eejgk6" path="res://susumeba_futatsu_alt_cover.png" id="9_5dd4i"]
+[ext_resource type="FontVariation" uid="uid://du70sncemcg62" path="res://visuals/fonts/noto-sans-default-weight.tres" id="12_flqon"]
 
 [sub_resource type="FontVariation" id="FontVariation_jk1qb"]
 base_font = ExtResource("1_bqqt6")
@@ -551,7 +552,45 @@ theme_override_font_sizes/font_size = 36
 text = "YOU GAIN TWO"
 horizontal_alignment = 1
 
+[node name="Credits" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CreditsVBox" type="VBoxContainer" parent="Credits"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="DannyCredit" type="Label" parent="Credits/CreditsVBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("12_flqon")
+theme_override_font_sizes/font_size = 32
+text = "Created by Daniel \"Scoots\" Nguyen (@sukotuze/@scootskun)
+for Code for a Cause"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="Credits/CreditsVBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("12_flqon")
+theme_override_font_sizes/font_size = 20
+text = "Music by Kevin MacLeod from incompetech.com
+Menu: \"Club Diver\"
+Stage 1-3: \"Cognitive Dissonance\"
+Stage 4: \"In a Heartbeat\""
+
+[node name="CloseCredits" type="Button" parent="Credits/CreditsVBox"]
+layout_mode = 2
+text = "Close"
+
 [connection signal="timeout" from="SplashTimer" to="." method="_on_splash_timer_timeout"]
 [connection signal="button_up" from="MenuButtons/NewRun" to="." method="_on_new_run_button_up"]
 [connection signal="button_up" from="MenuButtons/Test" to="." method="_on_test_button_up"]
+[connection signal="button_up" from="MenuButtons/Credits" to="." method="_on_credits_button_up"]
 [connection signal="button_up" from="MenuButtons/Quit" to="." method="_on_quit_button_up"]
+[connection signal="button_up" from="Credits/CreditsVBox/CloseCredits" to="." method="_on_close_credits_button_up"]

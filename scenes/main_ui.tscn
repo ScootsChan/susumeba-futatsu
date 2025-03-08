@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://6evq1w52p54j"]
+[gd_scene load_steps=8 format=3 uid="uid://6evq1w52p54j"]
 
 [ext_resource type="StyleBox" uid="uid://co7ntdu0fqsox" path="res://visuals/ui/player_info_panel.tres" id="1_4f8mo"]
 [ext_resource type="Script" uid="uid://n8wvncsk4ebd" path="res://scripts/main_ui.gd" id="1_djvmp"]
+[ext_resource type="FontVariation" uid="uid://du70sncemcg62" path="res://visuals/fonts/noto-sans-default-weight.tres" id="1_scoti"]
 [ext_resource type="PackedScene" uid="uid://cltfp7aey0aym" path="res://scenes/action_menu.tscn" id="3_e6fyy"]
+[ext_resource type="FontFile" uid="uid://b2qdcgxb303h" path="res://visuals/fonts/NotoSansJP-VariableFont_wght.ttf" id="5_i1gbh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bcrm2"]
 content_margin_left = 8.0
@@ -17,6 +19,8 @@ border_blend = true
 corner_radius_bottom_right = 24
 
 [sub_resource type="Theme" id="Theme_j5wdv"]
+Button/font_sizes/font_size = 24
+Button/fonts/font = ExtResource("1_scoti")
 EnemyPanel/base_type = &"PanelContainer"
 EnemyPanel/styles/panel = SubResource("StyleBoxFlat_bcrm2")
 PlayerPanel/base_type = &"PanelContainer"
@@ -85,3 +89,110 @@ layout_mode = 1
 offset_left = -196.0
 offset_top = -62.5
 offset_bottom = 62.5
+
+[node name="Pause" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PauseVBox" type="VBoxContainer" parent="Pause"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="PauseLabel" type="Label" parent="Pause/PauseVBox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_i1gbh")
+theme_override_font_sizes/font_size = 96
+text = "PAUSED"
+
+[node name="Return" type="Button" parent="Pause/PauseVBox"]
+layout_mode = 2
+text = "Return to Game"
+
+[node name="MainMenu" type="Button" parent="Pause/PauseVBox"]
+layout_mode = 2
+text = "Return to Main Menu"
+
+[node name="Quit" type="Button" parent="Pause/PauseVBox"]
+layout_mode = 2
+text = "Quit Game"
+
+[node name="GameOver" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameOverVBox" type="VBoxContainer" parent="GameOver"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="GameOver" type="Label" parent="GameOver/GameOverVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 96
+text = "GAME OVER"
+
+[node name="SadTicker" type="Label" parent="GameOver/GameOverVBox"]
+layout_mode = 2
+text = "It's over. Lay down your arms. The war is lost."
+horizontal_alignment = 1
+
+[node name="Progress" type="Label" parent="GameOver/GameOverVBox"]
+layout_mode = 2
+text = "You made it to: Stage X"
+horizontal_alignment = 1
+
+[node name="MainMenu" type="Button" parent="GameOver/GameOverVBox"]
+layout_mode = 2
+text = "Return to Main Menu"
+
+[node name="Quit" type="Button" parent="GameOver/GameOverVBox"]
+layout_mode = 2
+text = "Quit Game"
+
+[node name="Victory" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VictoryVBox" type="VBoxContainer" parent="Victory"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="Victory" type="Label" parent="Victory/VictoryVBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 96
+text = "VICTORY"
+
+[node name="HappyTicker" type="Label" parent="Victory/VictoryVBox"]
+layout_mode = 2
+text = "Keep moving forward! We'll make it!"
+horizontal_alignment = 1
+
+[node name="Continue" type="Button" parent="Victory/VictoryVBox"]
+layout_mode = 2
+text = "Continue"
+
+[connection signal="button_up" from="Pause/PauseVBox/Return" to="." method="_on_return_button_up"]
+[connection signal="button_up" from="Pause/PauseVBox/MainMenu" to="." method="_on_main_menu_button_up"]
+[connection signal="button_up" from="Pause/PauseVBox/Quit" to="." method="_on_quit_button_up"]
+[connection signal="button_up" from="GameOver/GameOverVBox/MainMenu" to="." method="_on_main_menu_button_up"]
+[connection signal="button_up" from="GameOver/GameOverVBox/Quit" to="." method="_on_quit_button_up"]
+[connection signal="button_up" from="Victory/VictoryVBox/Continue" to="." method="_on_continue_button_up"]

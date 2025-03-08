@@ -2,6 +2,10 @@ extends Control
 const TEST_RUN = preload("res://data/test_run.tres")
 
 const UNIT_HBOX = preload("res://scenes/unit_hbox.tscn")
+
+const BREAKOUT = preload("res://data/maps/breakout.tres")
+const BREAKOUT_OPFOR = preload("res://data/teams/opfor/breakout_opfor.tres")
+
 @onready var status_vbox: VBoxContainer = $UnitVBox/TeamStatus/StatusVBox
 
 @onready var venusian_text: Label = $UnitVBox/VenusianStatus/VenusianVBox/VenusianHBox/VenusianText
@@ -17,8 +21,8 @@ const UNIT_HBOX = preload("res://scenes/unit_hbox.tscn")
 @onready var you_gain_two: HBoxContainer = $TrackLine/TrackVBox/YouGainTwo
 
 func _ready() -> void:
-	#show_progress(Main.run_data)
-	show_progress(TEST_RUN)
+	show_progress(Main.run_data)
+	#show_progress(TEST_RUN)
 
 func load_team_data(team: TeamData, run: RunData):
 	match run.progress:
@@ -61,4 +65,9 @@ func show_progress(run: RunData):
 			enemy_ahead.visible = true
 			final_stretch.visible = true
 			you_gain_two.visible = true
-			
+
+
+func _on_breakout_susume_button_up() -> void:
+	Main.map_data = BREAKOUT
+	Main.enemy_data = BREAKOUT_OPFOR
+	get_tree().change_scene_to_file("res://scenes/combat_tiles.tscn")
