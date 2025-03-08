@@ -1,5 +1,7 @@
 extends Control
-@onready var unit_hbox: HBoxContainer = $UnitVBox/TeamStatus/StatusVBox/UnitHBox
+const TEST_RUN = preload("res://data/test_run.tres")
+
+const UNIT_HBOX = preload("res://scenes/unit_hbox.tscn")
 @onready var status_vbox: VBoxContainer = $UnitVBox/TeamStatus/StatusVBox
 
 @onready var venusian_text: Label = $UnitVBox/VenusianStatus/VenusianVBox/VenusianHBox/VenusianText
@@ -15,28 +17,27 @@ extends Control
 @onready var you_gain_two: HBoxContainer = $TrackLine/TrackVBox/YouGainTwo
 
 func _ready() -> void:
-	show_progress(Main.run_data)
+	#show_progress(Main.run_data)
+	show_progress(TEST_RUN)
 
 func load_team_data(team: TeamData, run: RunData):
-	for n in team.lineup.size():
-		var unit = team.lineup[n]
-		var unit_box = unit_hbox.instantiate()
-		var unit_icon = unit_hbox.get_node("UnitIcon")
-		var unit_name = unit_hbox.get_node("UnitName")
-		var hp = unit_hbox.get_node("UnitHealthPanel/UnitHealth")
-		status_vbox.add_child(unit_box)
-		if unit.health == 0: ###### if dead, pretty much
-			unit_icon.texture = unit.death_sprite
-		else:
-			unit_icon.texture = unit.sprite
-		unit_name.text = unit.char_name
-		hp.text = unit.health+" / "+unit.max_health
-	unit_hbox.visible = false
-	
 	match run.progress:
 		0:
 			venusian_text.text = "\"We've got to get out of here. Match my pace. We'll make it, trust me.\""
 			research_text.text = "\"Heard loud and clear. Get a move on, boys!\""
+		1:
+			for n in team.lineup.size():
+				var unit = team.lineup[n]
+				if unit.health > 0 and unit.health != unit.max_health:
+					unit.health += 1
+			venusian_text.text = "\"Let's get rest and repair while we can. We're moving at dawn.\""
+	
+	for n in team.lineup.size():
+		var unit_box = UNIT_HBOX.instantiate()
+		status_vbox.add_child(unit_box)
+		unit_box.load_data(team.lineup[n])
+	
+	
 
 func show_progress(run: RunData):
 	load_team_data(run.blufor, run)

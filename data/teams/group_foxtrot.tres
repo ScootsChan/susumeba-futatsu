@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TeamData" load_steps=6 format=3 uid="uid://b46l0r41wj16y"]
+
+[ext_resource type="Script" uid="uid://oxpk3ir8hm3h" path="res://scripts/resources/character_data.gd" id="1_ykxjr"]
+[ext_resource type="Script" uid="uid://ckj6yl4jn6h5h" path="res://scripts/resources/team.gd" id="2_dfih8"]
+[ext_resource type="Resource" uid="uid://cd0d1atl7r0xw" path="res://data/characters/blufor/the_venusian.tres" id="2_o03vy"]
+[ext_resource type="Resource" uid="uid://d0efhkrdlyya4" path="res://data/characters/blufor/research_team.tres" id="3_4b3ob"]
+[ext_resource type="Resource" uid="uid://ckci542apxktk" path="res://data/characters/blufor/security_team.tres" id="4_mud87"]
+
+[resource]
+script = ExtResource("2_dfih8")
+team_name = "Group Foxtrot"
+lineup = Array[ExtResource("1_ykxjr")]([ExtResource("2_o03vy"), ExtResource("3_4b3ob"), ExtResource("4_mud87")])
+posture = ""
+metadata/_custom_type_script = "uid://ckj6yl4jn6h5h"

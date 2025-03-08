@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="RunData" load_steps=3 format=3 uid="uid://birf3mhsg18nq"]
+
+[ext_resource type="Resource" uid="uid://b46l0r41wj16y" path="res://data/teams/group_foxtrot.tres" id="1_fu3e4"]
+[ext_resource type="Script" uid="uid://b131byedgr73s" path="res://scripts/resources/run_data.gd" id="1_xe5i4"]
+
+[resource]
+script = ExtResource("1_xe5i4")
+blufor = ExtResource("1_fu3e4")
+progress = 0
+metadata/_custom_type_script = "uid://b131byedgr73s"

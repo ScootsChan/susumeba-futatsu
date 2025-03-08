@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://vrkfhsk411lb"]
+[gd_scene load_steps=10 format=3 uid="uid://vrkfhsk411lb"]
 
 [ext_resource type="FontFile" uid="uid://qiu03x6amvbw" path="res://visuals/fonts/CoveredByYourGrace-Regular.ttf" id="1_0uv71"]
 [ext_resource type="FontVariation" uid="uid://du70sncemcg62" path="res://visuals/fonts/noto-sans-default-weight.tres" id="1_y7pii"]
@@ -49,19 +49,6 @@ region = Rect2(0, 0, 128, 128)
 [sub_resource type="AtlasTexture" id="AtlasTexture_y7pii"]
 atlas = ExtResource("2_jbaf8")
 region = Rect2(0, 128, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jbaf8"]
-atlas = ExtResource("2_jbaf8")
-region = Rect2(128, 0, 128, 128)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i0x8s"]
-content_margin_left = 12.0
-content_margin_right = 12.0
-bg_color = Color(0.270588, 0.447059, 0.890196, 1)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
 
 [node name="run_screen" type="Control"]
 layout_mode = 3
@@ -228,27 +215,8 @@ autowrap_mode = 3
 
 [node name="TeamStatus" type="PanelContainer" parent="UnitVBox"]
 layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="StatusVBox" type="VBoxContainer" parent="UnitVBox/TeamStatus"]
 layout_mode = 2
-
-[node name="UnitHBox" type="HBoxContainer" parent="UnitVBox/TeamStatus/StatusVBox"]
-layout_mode = 2
-
-[node name="UnitIcon" type="TextureRect" parent="UnitVBox/TeamStatus/StatusVBox/UnitHBox"]
-layout_mode = 2
-texture = SubResource("AtlasTexture_jbaf8")
-expand_mode = 3
-stretch_mode = 5
-
-[node name="UnitName" type="Label" parent="UnitVBox/TeamStatus/StatusVBox/UnitHBox"]
-layout_mode = 2
-text = "Hello, Gundam janai desu"
-
-[node name="UnitHealthPanel" type="PanelContainer" parent="UnitVBox/TeamStatus/StatusVBox/UnitHBox"]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_i0x8s")
-
-[node name="UnitHealth" type="Label" parent="UnitVBox/TeamStatus/StatusVBox/UnitHBox/UnitHealthPanel"]
-layout_mode = 2
-text = "10 / 10"
+size_flags_horizontal = 0

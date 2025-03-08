@@ -4,6 +4,8 @@ const TEST_CHAR = preload("res://data/characters/test_char.tres")
 const COMBAT_TILES = preload("res://scenes/combat_tiles.tscn")
 const HEX_DISTANCE = 100
 
+const GROUP_FOXTROT = preload("res://data/teams/group_foxtrot.tres")
+
 var characters = {
 	"test" = TEST_CHAR,
 	"test enemy" = preload("res://data/characters/test_enemy.tres")

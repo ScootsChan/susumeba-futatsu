@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=7 format=3 uid="uid://d0efhkrdlyya4"]
+
+[ext_resource type="Script" uid="uid://1up4qd7jnldc" path="res://scripts/resources/attack.gd" id="1_k4vaj"]
+[ext_resource type="Script" uid="uid://oxpk3ir8hm3h" path="res://scripts/resources/character_data.gd" id="2_6v5ud"]
+[ext_resource type="Texture2D" uid="uid://4byx4ct5nonk" path="res://visuals/character-sprites.png" id="2_a4dnc"]
+
+[sub_resource type="Resource" id="Resource_6v5ud"]
+script = ExtResource("1_k4vaj")
+attack_name = "small arms"
+range = 1
+damage = 1
+damage_type = "explosive"
+in_range = false
+targets = 0
+metadata/_custom_type_script = "uid://1up4qd7jnldc"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_osi10"]
+atlas = ExtResource("2_a4dnc")
+region = Rect2(768, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3oo30"]
+atlas = ExtResource("2_a4dnc")
+region = Rect2(128, 128, 128, 128)
+
+[resource]
+script = ExtResource("2_6v5ud")
+char_name = "Research Team"
+allegiance = "BLUFOR"
+sprite = SubResource("AtlasTexture_3oo30")
+death_sprite = SubResource("AtlasTexture_osi10")
+acted = false
+moved = false
+speed = 2
+weakness = "explosive"
+enemy_type = ""
+initiative = 0
+health = 4
+max_health = 4
+attacks = Array[ExtResource("1_k4vaj")]([SubResource("Resource_6v5ud")])
+metadata/_custom_type_script = "uid://oxpk3ir8hm3h"

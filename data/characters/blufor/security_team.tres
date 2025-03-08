@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=7 format=3 uid="uid://ckci542apxktk"]
+
+[ext_resource type="Script" uid="uid://1up4qd7jnldc" path="res://scripts/resources/attack.gd" id="1_w23vb"]
+[ext_resource type="Script" uid="uid://oxpk3ir8hm3h" path="res://scripts/resources/character_data.gd" id="2_i8wnl"]
+[ext_resource type="Texture2D" uid="uid://4byx4ct5nonk" path="res://visuals/character-sprites.png" id="2_np2t6"]
+
+[sub_resource type="Resource" id="Resource_yggga"]
+script = ExtResource("1_w23vb")
+attack_name = "anti-personnel high explosive"
+range = 2
+damage = 2
+damage_type = "explosive"
+in_range = false
+targets = 0
+metadata/_custom_type_script = "uid://1up4qd7jnldc"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u61v8"]
+atlas = ExtResource("2_np2t6")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_accrm"]
+atlas = ExtResource("2_np2t6")
+region = Rect2(256, 128, 128, 128)
+
+[resource]
+script = ExtResource("2_i8wnl")
+char_name = "Security Team"
+allegiance = "BLUFOR"
+sprite = SubResource("AtlasTexture_accrm")
+death_sprite = SubResource("AtlasTexture_u61v8")
+acted = false
+moved = false
+speed = 2
+weakness = "piercing"
+enemy_type = ""
+initiative = 0
+health = 6
+max_health = 6
+attacks = Array[ExtResource("1_w23vb")]([SubResource("Resource_yggga")])
+metadata/_custom_type_script = "uid://oxpk3ir8hm3h"

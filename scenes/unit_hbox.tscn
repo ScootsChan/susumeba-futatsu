@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://bc1hros0cipeq"]
+
+[ext_resource type="Script" uid="uid://bn1uqiov6wv4" path="res://scripts/unit_hbox.gd" id="1_ypud4"]
+[ext_resource type="Texture2D" uid="uid://4byx4ct5nonk" path="res://visuals/character-sprites.png" id="2_0tan0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_38y77"]
+resource_local_to_scene = true
+atlas = ExtResource("2_0tan0")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lw6r8"]
+content_margin_left = 12.0
+content_margin_right = 12.0
+bg_color = Color(0.270588, 0.447059, 0.890196, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="UnitHBox" type="HBoxContainer"]
+script = ExtResource("1_ypud4")
+
+[node name="UnitIcon" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 2
+texture = SubResource("AtlasTexture_38y77")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="UnitName" type="Label" parent="."]
+layout_mode = 2
+text = "Hello, Gundam janai desu"
+
+[node name="UnitHealthPanel" type="PanelContainer" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_lw6r8")
+
+[node name="UnitHealth" type="Label" parent="UnitHealthPanel"]
+layout_mode = 2
+text = "10 / 10"

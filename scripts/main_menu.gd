@@ -15,7 +15,12 @@ func _on_quit_button_up() -> void:
 	get_tree().quit()
 
 func _on_new_run_button_up() -> void:
-	pass # Replace with function body.
+	Main.player_data = Main.GROUP_FOXTROT.duplicate()
+	var run = RunData.new()
+	run.blufor = Main.player_data
+	run.progress = 0
+	Main.run_data = run
+	get_tree().change_scene_to_file("res://scenes/run_screen.tscn")
 
 func _on_test_button_up() -> void:
 	get_tree().change_scene_to_file("res://scenes/combat_tiles.tscn")
